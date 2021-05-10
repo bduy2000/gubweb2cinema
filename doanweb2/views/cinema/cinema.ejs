@@ -1,0 +1,35 @@
+<h1><%-title%></h1>
+<form method="POST" action="/cinema/create" class="container">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" >
+     
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" name="address" class="form-control" id="address">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</br>
+<h2>List of cinema</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>    
+    </tr>
+  </thead>
+  <tbody>
+
+  <% cinemas.forEach(function(cinema) { %>
+  <tr>
+    <td><%- cinema.id %></td>
+    <td><%- cinema.Name %></td>
+    <td><a class="btn btn-primary" href="/cinema/update/<%- cinema.id %>" role="button">Update</a>
+    <a class="btn btn-primary" href="/cinema/delete/<%- cinema.id %>" role="button">Del</a></td>
+
+  </tr>
+  <% })%>
+  </tbody>
+</table>
