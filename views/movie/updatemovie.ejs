@@ -1,0 +1,29 @@
+<h1><%-title%></h1>
+<form method="POST" action="/movie/update/<%- movie.id %>" class="container" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="<%- movie.Name %>">
+      </div>
+      <div class="mb-3">
+        <label for="number" class="form-label">Time</label>
+        <input type="number" name="time" class="form-control" id="number" placeholder="<%- movie.Time %>">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select class="form-select" name="category" aria-label="Default select example">
+            <option value="New" <%- movie.Category === 'New' ? 'selected' : '' %>>New</option>
+            <option value="Best" <%- movie.Category === 'Best' ? 'selected' : '' %>>Best</option>
+          </select>
+      </div>
+      <p>Release Date : <%- movie.ReleaseDate %></p>
+      <div class="md-form">
+        <label for="input_starttime">Chagne Release Date</label>
+        <input  type="datetime-local" id="input_starttime" name="releasedate" >
+      </div>
+      <img style="height: 150px; width: 150px" src="/movie/picture/<%- movie.id %>">
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Poster</label>
+        <input class="form-control" type="file" name="poster" id="formFile">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

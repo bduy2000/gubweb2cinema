@@ -1,0 +1,80 @@
+<h1><%-title%></h1>
+<div class="containter">
+    <h1>Add Theater</h1>
+    <form action="/theater/create" method="POST">
+        <div class="mb-3">
+        <label for="cinema" class="form-label">Cinema</label>
+        <select class="form-select" aria-label="Default select example" id="cinema" name="CinemaId">
+          <% cinemas.forEach(function(cinema) { %>
+          <option value="<%- cinema.id %>"><%- cinema.Name %></option>
+          <%})%>
+        </select>     
+        </div>
+       
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="name">
+          </div>
+          
+          <div class="mb-3">
+          <label for="category" class="form-label">category</label>
+        <select class="form-select" aria-label="Default select example" id="category" name="category">
+            <option value="2D">2D</option>
+            <option value="3D">3D</option>
+            <option value="4DX">4DX</option>
+          </select>     
+          </div>
+          <div class="mb-3"><label for="height" class="form-label">Height(A to Z)</label>
+        <select class="form-select" aria-label="Default select example" id="height" name="height">
+            <% for(var i = 69 ; i <= 90 ; i++) { %>
+            <option value="<%- String.fromCharCode(i) %>"><%- String.fromCharCode(i) %></option>
+            <%}%>
+          </select></div>
+        
+          <div class="mb-3"><label for="height" class="form-label">Width(20 to 100)</label>
+        <select class="form-select" aria-label="Default select example" name="width">
+            <% for(var j = 20 ; j <= 100 ; j++) { %>
+            <option value="<%- j %>"><%- j %></option>
+            <%}%>
+        </select></div>
+          
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+<h1>List of theater</h1>
+  <form action="/theater/search" method="POST">
+    <select class="form-select" aria-label="Default select example" name="CinemaId">
+      <% cinemas.forEach(function(cinema) { %>
+      <option value="<%- cinema.id %>"><%- cinema.Name %></option>
+      <%})%>
+    </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Width</th>
+              <th scope="col">Height</th>
+              <th scope="col">Cinema of Theater</th>
+              <th scope="col">Category</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+          <% theaters.forEach(function(theater) { %>
+            <tr>
+              <td><%- theater.Name %></td>
+              <td><%- theater.Width %></td>
+              <td><%- theater.Height %></td>
+              <td><%- theater.Cinema.Name %></td>
+              <td><%- theater.Category %></td>
+        
+              <td><a class="btn btn-primary" href="/theater/update/<%- theater.id %>" role="button">Update</a>
+                <a class="btn btn-primary" href="/theater/delete/<%- theater.id %>" role="button">Del</a></td>
+            </tr>
+          <% })%>
+          </tbody>
+        </table>
+</div>

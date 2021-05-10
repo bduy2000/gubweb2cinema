@@ -1,0 +1,52 @@
+<h1><%-title%></h1>
+<form method="POST" action="/movie/create" class="container" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="name" >
+      </div>
+      <div class="mb-3">
+        <label for="number" class="form-label">Time</label>
+        <input type="number" name="time" class="form-control" id="number">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select class="form-select" name="category" aria-label="Default select example">
+            <option value="New">New</option>
+            <option value="Best">Best</option>
+          </select>
+      </div>
+
+      <div class="md-form">
+        <label for="input_starttime">Release Date</label>
+        <input  type="date" id="input_starttime" name="releasedate" >
+      </div>
+
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Poster</label>
+        <input class="form-control" type="file" name="poster" id="formFile">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</br>
+<h2>Danh sach hoi nghi</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Time</th>
+      <th scope="col">Category</th>    
+      <th scope="col">ReleaseDate</th>  
+    </tr>
+  </thead>
+  <tbody>
+
+  <% movies.forEach(function(movie) { %>
+  <tr>
+    <td><%- movie.id %></td>
+    <td><%- movie.Name %></td>
+    <td><%- movie.Time %></td>
+    <td><%- movie.Category %></td>
+    <td><%- movie.ReleaseDate %></td>
+  </tr>
+  <% })%>

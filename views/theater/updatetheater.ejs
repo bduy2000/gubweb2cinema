@@ -1,0 +1,42 @@
+<h1>Add Theater</h1>
+<form action="/theater/update/<%-theater.id %>" method="POST">
+    <div class="mb-3">
+    <label for="cinema" class="form-label">Cinema</label>
+    <select class="form-select" aria-label="Default select example" id="cinema" name="CinemaId">
+      <% cinemas.forEach(function(cinema) { %>
+      <option value="<%- cinema.id %>" <%- cinema.id === theater.id ? 'selected' : '' %>><%- cinema.Name %></option>
+      <%})%>
+    </select>     
+    </div>
+   
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="<%- theater.Name %>">
+      </div>
+      
+      <div class="mb-3">
+      <label for="category" class="form-label">category</label>
+    <select class="form-select" aria-label="Default select example" id="category" name="category">
+        <option value="2D" <%- theater.Category === '2D' ? 'selected' : '' %>>2D</option>
+        <option value="3D" <%- theater.Category === '3D' ? 'selected' : '' %>>3D</option>
+        <option value="4DX" <%- theater.Category === '4DX' ? 'selected' : '' %>>4DX</option>
+      </select>     
+      </div>
+      <div class="mb-3"><label for="height" class="form-label">Height(A to Z)</label>
+    <select class="form-select" aria-label="Default select example" id="height" name="height">
+        <% for(var i = 69 ; i <= 90 ; i++) { %>
+        <option value="<%- String.fromCharCode(i) %>"  <%- theater.Height === String.fromCharCode(i) ? 'selected' : '' %>><%- String.fromCharCode(i) %></option>
+        <%}%>
+      </select></div>
+    
+      <div class="mb-3"><label for="height" class="form-label">Width(20 to 100)</label>
+    <select class="form-select" aria-label="Default select example" name="width">
+        <% for(var j = 20 ; j <= 100 ; j++) { %>
+        <option value="<%- j %>"<%- theater.Width === j ? 'selected' : '' %>><%- j %></option>
+        <%}%>
+    </select></div>
+      
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
