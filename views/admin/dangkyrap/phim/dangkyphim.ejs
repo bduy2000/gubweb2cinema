@@ -1,0 +1,80 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Insert</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-contact100">
+		<div class="wrap-contact100">
+                 <center>
+				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
+					Đăng ký Phim
+				</span>
+                </center>
+
+			<form action=""  class="contact100-form validate-form" method="POST" enctype="multipart/form-data"> 
+                
+             
+
+                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" >
+					<span  class="label-input100">ID Phim*</span>
+					<input class="input100" type="text" name="proid" placeholder="Vui lòng nhập ID phim">
+				</div>
+
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Tên Phim</span>
+					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên phim">
+				</div>
+			
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Ngày Công Chiếu</span>
+					<input class="input100" type="datetime" name="number" placeholder="Vui lòng nhập ngày công chiếu"/>
+				</div>
+
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Thời lượng</span>
+					<input class="input100" type="number" name="number" placeholder="Vui lòng nhập thời lượng"/>
+				</div>
+
+				<div class="wrap-input validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Poster Phim</span>
+								<img style="width:200px;height:200px;display: block; margin-left: auto; margin-right: auto" id="output" />
+					
+					
+						<input type="file" class="form-control-file" name="avatar" accept="image/*"
+							onchange="loadFile(event)" multiple>
+		  
+						<script>
+							
+						var loadFile = function(event) 
+						{
+							var output = document.getElementById('output');
+							output.src = URL.createObjectURL(event.target.files[0]);
+							output.onload = function() {
+								URL.revokeObjectURL(output.src) // free memory
+							}
+						};
+						</script>
+						<br />
+				
+				
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn">
+                        <span>
+                            Submit
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    
+</body>
