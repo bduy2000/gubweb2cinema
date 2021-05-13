@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const Theater = require('../models/theater');
 const Cinema = require('../models/cinema');
+const ensureadmin = require('../middlewares/ensure_admin');
+router.use(ensureadmin);
 router.use(function(req,res,next){
     res.locals.title = 'Theater';
     next();
@@ -10,26 +12,22 @@ router.use(function(req,res,next){
 //create
 router.get('/theater',asyncHandler (async function(req,res){
     const cinemas = await Cinema.findAll();
-    if(req.session.cinemaid){
-        const id = req.session.cinemaid;
-        const theaters = await Theater.findAll({include: Cinema,where:{CinemaId: id}});
-        res.render('theater/theater',{cinemas,theaters});
-    }else{
-        const theaters = await Theater.findAll({include: Cinema});
-        res.render('theater/theater',{cinemas,theaters});
-    }
-    
-    }));
-    
+    const theaters = await Theater.findAll({include: Cinema});
+    res.render('theater/theater',{cinemas,theaters});
+}));
+
+router.get('/theater/add',asyncHandler (async function(req,res){
+    const cinemas = await Cinema.findAll();
+    res.render('theater/addtheater',{cinemas});
+}));
     
 
-router.post('/theater/create',asyncHandler (async function(req,res){
+router.post('/theater/add',asyncHandler (async function(req,res){
     const {name,width,height,category,CinemaId} = req.body;
     const cinema = await Cinema.findByPk(CinemaId);
     if(cinema){
         const theater = await cinema.createTheater({Name: name,Width: width , Height: height, Category: category });
         if(theater){
-            req.session.cinemaid = cinema.id;
             res.redirect('/theater');
         }else{
             res.send('error');
@@ -38,11 +36,7 @@ router.post('/theater/create',asyncHandler (async function(req,res){
         res.send('error');
     }
 }));
-router.post('/theater/search',asyncHandler (async function(req,res){
-        const {CinemaId} = req.body;
-        req.session.cinemaid = CinemaId;
-        res.redirect('/theater');
-    }));
+
 //update
 router.get('/theater/update/:id',asyncHandler (async function(req,res){
     const id = req.params.id;
@@ -54,7 +48,7 @@ router.get('/theater/update/:id',asyncHandler (async function(req,res){
 
 router.post('/theater/update/:id',asyncHandler (async function(req,res){
     const id = req.params.id;
-    const {name,address,width,height,category,CinemaId} = req.body;
+    const {name,width,height,category,CinemaId} = req.body;
     const theater = await Theater.findByPk(id);
     if(theater){
         if(name){

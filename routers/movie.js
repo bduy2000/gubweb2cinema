@@ -6,7 +6,12 @@ const multer = require('multer');
 const upload = multer({ storage:  multer.memoryStorage() });
 const rename = promisify(require('fs').rename);
 const Movie = require('../models/movie');
-
+const ensureadmin = require('../middlewares/ensure_admin');
+router.use(ensureadmin);
+router.use(function(req,res,next){
+    res.locals.title = 'Movie';
+    next();
+})
 router.get('/movie/picture/:id', asyncHandler( async function(req,res){
     const movie = await Movie.findByPk(req.params.id);
     if(!movie || !movie.Poster){
@@ -21,10 +26,13 @@ router.get('/movie',asyncHandler (async function(req,res){
     res.render('movie/movie',{movies});
     }));
     
+    router.get('/movie/add',asyncHandler (async function(req,res){
+        res.render('movie/addmovie');
+        })); 
 
-router.post('/movie/create',upload.single('poster'),asyncHandler(async function(req, res) {
-    const {name,time,releasedate,category} = req.body;
-    const movie = await Movie.create({Name: name , Time: time, ReleaseDate: releasedate , Category: category});
+router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req, res) {
+    const {name,time,releasedate,decription} = req.body;
+    const movie = await Movie.create({Name: name , Time: time, ReleaseDate: releasedate , Decription: decription});
     if(movie){
         movie.Poster = req.file.buffer;
         await movie.save();
@@ -46,7 +54,7 @@ router.get('/movie/update/:id',asyncHandler (async function(req,res){
 
 router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async function(req, res) {
     const id = req.params.id;
-    const {name,time,releasedate,category} = req.body;
+    const {name,time,releasedate,decription} = req.body;
     const movie = await Movie.findByPk(id);
     if(movie){
         if(name){
@@ -61,7 +69,9 @@ router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async funct
         if(req.file){
             movie.Poster = req.file.buffer;
         }
-        movie.Category = category;
+       if(decription){
+           movie.Decription = decription;
+       }
         await movie.save();
         res.redirect('/movie');
     }else{

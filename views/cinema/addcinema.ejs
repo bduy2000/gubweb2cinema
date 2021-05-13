@@ -4,25 +4,25 @@
 		<div class="wrap-contact100">
                  <center>
 				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
-					Update Cinema
+					Add Cinema
 				</span>
                 </center>
 
-			<form action="/cinema/update/<%- cinema.id %>"  class="contact100-form validate-form" method="POST" > 
+			<form action="/cinema/add"  class="contact100-form validate-form" method="POST" > 
                 
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
-					<span class="label-input100">Tên Cụm Rạp*</span>
-					<input class="input100" type="text" name="name" placeholder="<%- cinema.Name %>">
+					<span class="label-input100">Name*</span>
+					<input class="input100" type="text" name="name" placeholder="Vui lòng điền tên của Cụm Rạp">
 				</div>
 			
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Address</span>
-					<textarea class="input100" name="address" placeholder="<%- cinema.Address %>"></textarea>
+					<textarea class="input100" name="address" placeholder="Vui lòng điền địa chỉ của Cụm Rạp "></textarea>
 				</div>
 
                 <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit">
                         <span>
                             Submit
                         </span>
@@ -31,3 +31,8 @@
             </form>
         </div>
     </div>
+
+
+    
+    
+

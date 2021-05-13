@@ -20,7 +20,7 @@
 		<div class="wrap-contact100">
                  <center>
 				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
-					 Update Theater
+					 Add Theater
 				</span>
                 </center>
 
@@ -28,40 +28,39 @@
                 
             
 
-				<div class="mb-3">
-                    <label for="cinema" class="form-label">Cinema</label>
-                    <select  name="CinemaId" class="form-select">
+				<div style="height: 30px;width: 300px" class="dropdown dropdown">
+                    <select  name="CinemaId" class="dropdown-select">
 						<% cinemas.forEach(function(cinema) { %>
-							<option value="<%- cinema.id %>" <%- cinema.id === theater.CinemaId ? 'selected' : '' %>><%- cinema.Name %></option>
+							<option value="<%- cinema.id %>"><%- cinema.Name %></option>
 							<%})%>
                     </select>
              	</div>
 				 
 				 <div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Name</span>
-					<input class="input100" type="text" name="name" placeholder="<%- theater.Name %>">
+					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên rạp phim">
 				</div>
 
 				<div class="mb-3"><label for="height" class="form-label">Height(A to Z)</label>
 					<select class="form-select" aria-label="Default select example" id="height" name="height">
 						<% for(var i = 69 ; i <= 90 ; i++) { %>
-                            <option value="<%- String.fromCharCode(i) %>"  <%- theater.Height === String.fromCharCode(i) ? 'selected' : '' %>><%- String.fromCharCode(i) %></option>
+						<option value="<%- String.fromCharCode(i) %>"><%- String.fromCharCode(i) %></option>
 						<%}%>
 					  </select></div>
 					
 					  <div class="mb-3"><label for="height" class="form-label">Width(20 to 100)</label>
 					<select class="form-select" aria-label="Default select example" name="width">
 						<% for(var j = 20 ; j <= 100 ; j++) { %>
-                            <option value="<%- j %>"<%- theater.Width === j ? 'selected' : '' %>><%- j %></option>
+						<option value="<%- j %>"><%- j %></option>
 						<%}%>
 					</select></div>
 
 						  <div class="mb-3">
 							<label for="category" class="form-label">category</label>
 						  <select class="form-select" aria-label="Default select example" id="category" name="category">
-                            <option value="2D" <%- theater.Category === '2D' ? 'selected' : '' %>>2D</option>
-                            <option value="3D" <%- theater.Category === '3D' ? 'selected' : '' %>>3D</option>
-                            <option value="4DX" <%- theater.Category === '4DX' ? 'selected' : '' %>>4DX</option>
+							  <option value="2D">2D</option>
+							  <option value="3D">3D</option>
+							  <option value="4DX">4DX</option>
 							</select>     
 							</div>
 
@@ -78,3 +77,5 @@
     </div>
 
     
+    
+

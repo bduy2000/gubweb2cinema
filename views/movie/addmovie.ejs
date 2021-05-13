@@ -5,35 +5,33 @@
 		<div class="wrap-contact100">
                  <center>
 				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
-					Update Movie
+					Add Movie
 				</span>
                 </center>
 
-			<form action="/movie/update/<%- movie.id %>"  class="contact100-form validate-form" method="POST" enctype="multipart/form-data"> 
+			<form action="/movie/add"  class="contact100-form validate-form" method="POST" enctype="multipart/form-data"> 
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Name</span>
-					<input class="input100" type="text" name="name" placeholder="<%- movie.Name %>">
+					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên phim">
 				</div>
-                <div class="wrap-input100 validate-input bg0 rs1-alert-validate">
-                <p>Release Date: <%- movie.ReleaseDate %></p>
-                </div>
+			
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Release Date</span>
-					<input class="input100" type="date" name="releasedate" />
+					<input class="input100" type="date" name="releasedate" placeholder="Vui lòng nhập ngày công chiếu"/>
 				</div>
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Time</span>
-					<input class="input100" type="number" name="time" placeholder="<%- movie.Time  %>"/>
+					<input class="input100" type="number" name="time" placeholder="Vui lòng nhập thời lượng"/>
 				</div>
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Decription</span>
-					<textarea class="input100" name="decription" ><%- movie.Decription %></textarea>
+					<textarea class="input100" name="decription" placeholder="Vui lòng điền mo ta của phim "></textarea>
 				</div>
 				<div class="wrap-input validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Poster</span>
-								<img src="/movie/picture/<%- movie.id %>"  style="width:200px;height:200px;display: block; margin-left: auto; margin-right: auto" id="output" />
+								<img style="width:200px;height:200px;display: block; margin-left: auto; margin-right: auto" id="output" />
 					
 					
 						<input type="file" class="form-control-file" name="poster" accept="image/*"

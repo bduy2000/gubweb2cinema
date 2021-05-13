@@ -1,7 +1,9 @@
 //cac modules
 const express = require('express');
 const cookieSession = require('cookie-session');
+
 const userRouter = require('./routers/user');
+const authRouter = require('./routers/auth');
 const homeRouter = require('./routers/home');
 const MovieRouter = require('./routers/movie');
 const CinemaRouter = require('./routers/cinema');
@@ -26,9 +28,10 @@ app.use(cookieSession({
 
 app.use(userMiddleware);
 app.use(express.urlencoded({extended: false}));// ham xu li cac du lieu dc post len
-app.use(express.static('public'));//nhung cai trong thu muc public co the load len
+app.use(express.static(__dirname + '/public'));//nhung cai trong thu muc public co the load len
 app.use(expressLayouts);
 app.use('/GUB/user',userRouter); // tat ca duong dan /TODO/.. thi chay dc
+app.use('/GUB/profile',authRouter);
 app.use('/GUB',homeRouter);
 app.use(CinemaRouter);
 app.use(TheaterRouter);

@@ -12,6 +12,12 @@ router.get('/home',function(req,res){
 res.render('home');
 });
 
+router.get('/admin',function(req,res){
+    res.locals.title = 'Admin';
+    res.render('adminpage');
+    });
+
+
 router.get('/send',asyncHandler (async function(req,res){
     const {code,userid}= req.query;
     User.ResetCode(userid);

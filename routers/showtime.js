@@ -4,23 +4,27 @@ const router = express.Router();
 const Movie = require('../models/movie');
 const Theater = require('../models/theater');
 const ShowTime = require('../models/showtime');
-
+const ensureadmin = require('../middlewares/ensure_admin');
+router.use(ensureadmin);
+router.use(function(req,res,next){
+    res.locals.title = 'Showtime';
+    next();
+})
 //create
 router.get('/showtime',asyncHandler (async function(req,res){
-    const theaters = await Theater.findAll();
-    const movies = await Movie.findAll();
     const showtimes = await ShowTime.findAll({include:[ {model: Theater},{model: Movie} ]});
-    console.log(showtimes);
-        res.render('showtime/showtime',{movies,theaters,showtimes});
+        res.render('showtime/showtime',{showtimes});
     }));
-    
+
+    router.get('/showtime/add',asyncHandler (async function(req,res){
+        const theaters = await Theater.findAll();
+        const movies = await Movie.findAll();
+            res.render('showtime/addshowtime',{movies,theaters});
+        }));
     
 
-router.post('/showtime/create',asyncHandler (async function(req,res){
+router.post('/showtime/add',asyncHandler (async function(req,res){
     const {MovieId,TheaterId,timebegin,timefinish,price,dateshow} = req.body;
-  
-    const movie = await Movie.findByPk(MovieId);
-    const theater = await Theater.findByPk(TheaterId);
     const showtime =await ShowTime.findOne({where:{MovieId:MovieId,TheaterId:TheaterId,TimeBegin:timebegin,DateShow:dateshow}});
 
     if(showtime){
@@ -34,11 +38,7 @@ router.post('/showtime/create',asyncHandler (async function(req,res){
         }
     }
 }));
-router.post('/theater/search',asyncHandler (async function(req,res){
-        const {CinemaId} = req.body;
-        req.session.cinemaid = CinemaId;
-        res.redirect('/theater');
-    }));
+
 
 
 //delete

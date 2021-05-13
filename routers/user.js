@@ -20,16 +20,17 @@ router.post('/login',asyncHandler (async function(req,res){
     const found = await User.findbyEmail(email)
         if(found && brcypt.compareSync(password,found.Password) && found.Code == null){
             req.session.UserId = found.id;
-            res.redirect('/GUB/home');
+            if(found.Category == 'admin'){
+                res.redirect('/GUB/admin');
+            }else{
+                res.redirect('/GUB/home');
+            }
+           
             }else{
                 res.render('user/login');
             }
 }));
-//logout
-router.get('/logout',function(req,res){
-    delete req.session.UserId ;
-    res.redirect('/GUB/home');
-});
+
 
 router.get('/customer/register',function(req,res){
     res.locals.title = 'Register';
@@ -40,23 +41,24 @@ router.get('/customer/register',function(req,res){
 
 router.post('/customer/register',asyncHandler (async function(req,res){
     const {name,email,tel,password,confirmpassword} = req.body;
-  
-    if(password != confirmpassword){
-     res.send('Those passwords didn’t match. Try again');
-    }else{
-    const code = randomString(4);
-    const hash = brcypt.hashSync(password,10);
-    console.log(hash);
-    const found = await User.Register(name,email,hash,tel,'customer',code);
-       if(found){
-           const context ="To register click here : localhost:3000/GUB/send?code="+code+"&userid="+found.id;
-           Email.send(email,'Register',context);
-           res.send(`Check your email to vertify your account`);
-           }else{
-               res.render('user/register');
-           }
-    }       
-}));
+    const finduser = await User.findbyEmail(email);
+     if(password != confirmpassword){
+      res.send('Those passwords didn’t match. Try again');
+     }else if(finduser){
+         res.send('This account exist');
+     }else{
+     const code = randomString(4);
+     const hash = brcypt.hashSync(password,10);
+     const found = await User.Register(name,email,hash,tel,'customer',code);
+        if(found){
+            const context ="To register click here : localhost:3000/GUB/send?code="+code+"&userid="+found.id;
+            Email.send(email,'Register',context);
+            res.send(`Check your email to vertify your account`);
+            }else{
+                res.render('user/register');
+            }
+     }             
+ }));
 
 
 
@@ -70,13 +72,14 @@ router.get('/admin/register',function(req,res){
 router.post('/admin/register',asyncHandler (async function(req,res){
     
     const {name,email,tel,password,confirmpassword} = req.body;
-  
+   const finduser = await User.findbyEmail(email);
     if(password != confirmpassword){
      res.send('Those passwords didn’t match. Try again');
+    }else if(finduser){
+        res.send('This account exist');
     }else{
     const code = randomString(4);
     const hash = brcypt.hashSync(password,10);
-    console.log(hash);
     const found = await User.Register(name,email,hash,tel,'admin',code);
        if(found){
            const context ="To register click here : localhost:3000/GUB/send?code="+code+"&userid="+found.id;
@@ -88,26 +91,7 @@ router.post('/admin/register',asyncHandler (async function(req,res){
     }             
 }));
 
-//profile
-router.get('/profile', asyncHandler(async function(req, res) {
-    const user = req.user;
-    res.locals.title = user.Name;
-    res.render('user/profile');
-}));
 
-
-router.post('/profile',asyncHandler(async function(req, res) {
-    const { name ,tel} = req.body;
-    const user = req.user;
-    if(name){
-        user.Name = name;
-    }
-    if(tel){
-        user.Tel = tel;
-    }
-    await user.save();
-    res.redirect('profile');
-}));
 //revive
 router.get('/revive', asyncHandler(async function(req, res) {
     res.render('user/revive');

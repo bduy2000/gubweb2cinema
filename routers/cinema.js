@@ -2,7 +2,8 @@ const asyncHandler = require('express-async-handler');
 const express = require('express');
 const router = express.Router();
 const Cinema = require('../models/cinema');
-
+const ensureadmin = require('../middlewares/ensure_admin');
+router.use(ensureadmin);
 router.use(function(req,res,next){
     res.locals.title = 'Cinema';
     next();
@@ -13,11 +14,15 @@ router.get('/cinema',asyncHandler (async function(req,res){
     const cinemas = await Cinema.findAll();
     res.render('cinema/cinema',{cinemas});
     }));
-    
 
-router.post('/cinema/create',asyncHandler (async function(req,res){
+    router.get('/cinema/add',asyncHandler (async function(req,res){
+        res.render('cinema/addcinema');
+        }));
+
+router.post('/cinema/add',asyncHandler (async function(req,res){
     const {name,address} = req.body;
-    const cinema = await Cinema.create({Name: name,Adress:address});
+
+    const cinema = await Cinema.create({Name: name,Address:address});
     if(cinema){
         res.redirect('/cinema');
     }else{
@@ -27,7 +32,6 @@ router.post('/cinema/create',asyncHandler (async function(req,res){
 //update
 router.get('/cinema/update/:id',asyncHandler (async function(req,res){
     const id = req.params.id;
-    console.log(id);
     const cinema = await Cinema.findByPk(id);
     res.locals.title = cinema.Name;
     res.render('cinema/updatecinema',{cinema});
