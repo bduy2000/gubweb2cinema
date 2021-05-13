@@ -94,6 +94,7 @@ router.post('/admin/register',asyncHandler (async function(req,res){
 
 //revive
 router.get('/revive', asyncHandler(async function(req, res) {
+    res.locals.title = 'Revive'
     res.render('user/revive');
 }));
 
@@ -137,7 +138,7 @@ router.post('/changepass',asyncHandler(async function(req, res) {
         user.Password = hash;
         user.Code = null;
         await user.save();
-        res.redirect('profile');
+        res.redirect('/GUB/profile');
     }else{
         res.render('user/changepass');
     }
