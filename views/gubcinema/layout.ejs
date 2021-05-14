@@ -96,7 +96,144 @@
 </head>
 
 <body id="home-page">
+    <!-- Đăng nhập thành công body sẽ thay đổi như này 
+    Khi chưa đăng nhập sẽ không có USER-INFO mà trực tiếp vào LOAD-PAGE-->
+    <!-- <body id="home-page" cz-shortcut-listen="true" class=""> -->
+    <!-- USER-INFO-->
+    <!-- <div class="user-wrap">
+        <div class="user-details" style="opacity: 1;">
+            <div class="close-user"></div>
+            <div class="user-center">
+                <div class="user-info">
+                    <h2>Thông tin tài khoản</h2>
+                    <ul>
+                        <li>
+                            <div class="col-title">Giới tính:</div>
+                            <div class="col-value">Nữ</div>
+                        </li>
+                        <li>
+                            <div class="col-title">Họ tên:</div>
+                            <div class="col-value">Phương Dung</div>
+                        </li>
+                        <li>
+                            <div class="col-title">Ngày sinh:</div>
+                            <div class="col-value">27/03/2000</div>
+                        </li>
+                        <li>
+                            <div class="col-title">Địa chỉ:</div>
+                            <div class="col-value">TP.HCM</div>
+                        </li>
+                        <li>
+                            <div class="col-title">Số CMNN/Bằng lái:</div>
+                            <div class="col-value"></div>
+                        </li>
+                        <li>
+                            <div class="col-title">Điện thoại:</div>
+                            <div class="col-value"></div>
+                        </li>
+                        <li>
+                            <div class="col-title">Tên đăng nhập:</div>
+                            <div class="col-value"></div>
+                        </li>
+                        <li>
+                            <div class="col-title">Email:</div>
+                            <div class="col-value"></div>
+                        </li>
+                    </ul>
+                    <a class="modify-user" href="javascript:void(0);">Thay đổi thông tin</a>
+                </div>
 
+                <div class="user-history">
+                    <h2>Hoạt động với GUBCinema</h2>
+                    <table>
+
+                        <tbody>
+                            <tr>
+                                <td>Ngày</td>
+                                <td>cashiers</td>
+                                <td>type</td>
+                                <td>points</td>
+                                <td>reason</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <ul>
+                        <li>
+                            <div class="col-title">Điểm tích lũy:</div>
+                            <div class="col-value">0</div>
+                        </li>
+                        <li>
+                            <div class="col-title">Loại thẻ:</div>
+                            <div class="col-value"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="user-center">
+
+                <div class="user-form modify">
+                    <div class="icon-arrow"></div>
+                    <h3 class="user-title">Chỉnh sửa thông tin cá nhân</h3>
+                    <form id="modify-top">
+                        <div class="require-col">
+                            <label class="gender"><input type="radio" name="gender" value="1"><span class="gender-name">Nam</span><span class="gender-shape"></span></label>
+                            <label class="gender"><input type="radio" name="gender" value="0" checked=""><span class="gender-name">Nữ</span><span class="gender-shape"></span></label>
+                        </div>
+
+                        <div class="require-col">
+                            <div class="input-text name">
+                                <span class="focus-text hide">HỌ TÊN (*)</span>
+                                <input id="update_name" name="name" type="text" value="Phương Dung">
+                            </div>
+                            <div class="input-text birth">
+                                <span class="focus-text hide">DD/MM/YYYY ( Ngày sinh*)</span>
+                                <input id="update_birthday" name="birthday" type="text" value="27/03/2000">
+                            </div>
+                            <div class="input-text address">
+                                <span class="focus-text hide">ĐỊA CHỈ (*)</span>
+                                <input id="update_address" name="address" type="text" value="2B1 Nguyễn Văn Bứa, Xuân Thới Sơn,, Hóc Môn, TP.HCM">
+                            </div>
+                            <div class="input-text code">
+                                <span class="focus-text hide">SỐ CMNN/BẰNG LÁI (*)</span>
+                                <input id="update_cmnn" name="cmnn" type="text" value="02602136">
+                            </div>
+                            <div class="input-text tel">
+                                <span class="focus-text hide">ĐIỆN THOẠI (*)</span>
+                                <input id="update_phone" name="phone" type="text" value="0965434165">
+                            </div>
+                            <div class="input-text email">
+                                <span class="focus-text hide">EMAIL (*)</span>
+                                <input readonly="readonly" id="update_email" name="email" type="text" value="thienanh.vuong27@gmail.com">
+                            </div>
+                            <div class="input-text username">
+                                <span class="focus-text hide">TÊN ĐĂNG NHẬP (*)</span>
+                                <input readonly="readonly" id="update_username" name="username" type="text" value="wangtianying">
+                            </div>
+                            <div class="input-text password">
+                                <span class="focus-text">MẬT KHẨU (*)</span>
+                                <input id="update_password" name="password" type="password" value="">
+                            </div>
+                            <div class="input-text confirmpass">
+                                <span class="focus-text">NHẬP LẠI MẬT KHẨU (*)</span>
+                                <input id="update_password_confirm" name="password_confirm" type="password" value="">
+                            </div>
+                            <div class="input-but">
+                                <input type="button" class="modify-user-hide" value="ĐÓNG LẠI" id="btn-save-top">
+                                <input type="button" value="LƯU LẠI" id="btn-save-top">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+    <!--USER-INFO -->
+
+    <!-- Khi chưa đăng nhập, trực tiếp vào đây -->
     <!--LOAD-PAGE-->
     <div class="all-pics"></div>
     <div class="all-album"></div>
@@ -168,11 +305,6 @@
                             </a>
                         </li>
                         <li>
-                            <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="donhangcuatoi">
-                                <h1>Lịch sử giao dịch</h1>
-                            </a>
-                        </li>
-                        <li>
                             <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="gioithieu">
                                 <h1>Giới thiệu</h1>
                             </a>
@@ -187,6 +319,7 @@
 
     <!--CONTAINER-->
     <div class="container">
+        <!-- <div class="container no-scroll"> khi mở xem thông tin cá nhân không cho cuộn-->
         <div class="container-bg">
 
             <div class="scroll-down-desktop">scroll down</div>
@@ -201,6 +334,11 @@
                                 thành viên</a></li>
                         <li class="btn-login"><a data-tmp="Đăng xuất" href="javascript:void(0);">Đăng nhập</a></li>
                     </ul>
+                    <!-- Đăng nhập thành công -->
+                    <!-- <ul>
+                        <li class="btn-register btn-userinfo"><a data-tmp="Đăng ký thành viên" href="javascript:void(0);">Thông tin thành viên</a></li>
+                        <li class="btn-login btn-logout"><a data-tmp="Đăng nhập" href="javascript:void(0);">Đăng xuất</a></li>
+                    </ul> -->
                     <!--//user-nav//-->
 
                     <!--//user-form//-->
@@ -1257,7 +1395,8 @@
                     <div><strong>8. Đưa thông tin lên trang web:</strong>
 
                         <p>Bạn không được đưa lên, hoặc chuyển tải lên trang web tất cả những hình ảnh, từ ngữ khiêu dâm, thô tục, xúc phạm, phỉ báng, bôi nhọ, đe dọa, những thông tin không hợp pháp hoặc những thông tin có thể đưa đến việc vi phạm pháp luật,
-                            trách nhiệm pháp lý.&nbsp;Cinestar&nbsp;và tất cả các bên có liên quan đến việc xây dựng và quản lý trang web không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên trang web.</p>
+                            trách nhiệm pháp lý.&nbsp;Cinestar&nbsp;và tất cả các bên có liên quan đến việc xây dựng và quản lý trang web không chịu trách nhiệm hoặc có nghĩa vụ pháp lý đối với những phát sinh từ nội dung do bạn tải lên trang web.
+                        </p>
                     </div>
 
                     <div><strong>9. Luật áp dụng:</strong>
@@ -1335,7 +1474,8 @@
 
                 <p>Tất cả các nội dung Website có thể được thay đổi bất kỳ lúc nào. CINESTAR&nbsp;giữ quyền thay đổi, chỉnh sửa và loại bỏ những thông tin hợp pháp vào bất kỳ thời điểm nào vì bất kỳ lý do nào.</p>
 
-                <p>CINESTAR lưu ý: Quý khách hàng vui lòng cập nhật thường xuyên Website để biết những thay đổi hoặc đọc kỹ lại các Quy Định Chung, Điều Kiện và Điều Khoản Giao Dịch, Chính Sách Bảo Mật và những quy định khác trước khi thực hiện giao dịch.</p>
+                <p>CINESTAR lưu ý: Quý khách hàng vui lòng cập nhật thường xuyên Website để biết những thay đổi hoặc đọc kỹ lại các Quy Định Chung, Điều Kiện và Điều Khoản Giao Dịch, Chính Sách Bảo Mật và những quy định khác trước khi thực hiện giao dịch.
+                </p>
 
                 <p>Tất cả thông tin, bao gồm nội dung, phần mềm, dữ liệu… được đăng tải lên Website và các sản phẩm liên quan của CINESTAR đều thuộc bản quyền của CINESTAR, quý khách hàng có thể tải về và sử dụng. Nhưng những nội dung đó không thuộc quyền
                     sở hữu của quý khách hàng, nên CINESTAR nghiêm cấm mua bán, phân phối, bẻ khoá, sao chép, sửa đổi hay sử dụng bất kỳ nội dung nào mà không có sự đồng ý của CINESTAR.
@@ -1399,7 +1539,8 @@
                         khác:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
                 <p>Website này có thể được liên kết với những trang website khác, CINESTAR không trực tiếp hay gián tiếp quản lý những website liên kết. CINESTAR không hợp tác, tài trợ, xác thực, đứng sau hay sát nhập với những website đó, trừ khi sự hợp
-                    tác đó được công bố rõ ràng. Khi truy cập vào Website, CINESTAR hy vọng quý khách hàng có thể hiểu rằng CINESTAR không kiểm soát, quản lý những trang liên kết và không chịu trách nhiệm về nội dung của bất kỳ website liên kết nào.</p>
+                    tác đó được công bố rõ ràng. Khi truy cập vào Website, CINESTAR hy vọng quý khách hàng có thể hiểu rằng CINESTAR không kiểm soát, quản lý những trang liên kết và không chịu trách nhiệm về nội dung của bất kỳ website liên kết nào.
+                </p>
 
                 <p><strong>10. Luật áp dụng và giải quyết tranh chấp:</strong></p>
 
@@ -1522,7 +1663,8 @@
                     trong giao dịch đó.</p>
 
                 <p>Email và tin nhắn (SMS) xác nhận đặt vé/hàng hóa: sau khi hoàn thành việc thanh toán vé/hàng hóa trực tuyến, quý khách hàng sẽ nhận được thư xác nhận thông tin chi tiết vé/hàng hóa đã thanh toán thông qua địa chỉ thư điện tử (email) và/hoặc
-                    số điện thoại di động mà quý khách hàng đã cung cấp cho CINESTAR. Email xác nhận thông tin đặt vé/hàng hóa có thể đi vào hộp thư rác (spam mail) của quý khách hàng, vì vậy hãy kiểm tra chúng thật kỹ trước khi liên lạc với CINESTAR.</p>
+                    số điện thoại di động mà quý khách hàng đã cung cấp cho CINESTAR. Email xác nhận thông tin đặt vé/hàng hóa có thể đi vào hộp thư rác (spam mail) của quý khách hàng, vì vậy hãy kiểm tra chúng thật kỹ trước khi liên lạc với CINESTAR.
+                </p>
 
                 <p>Bằng việc thanh toán qua Website này, quý khách hàng chấp nhận vị trí ghế ngồi mà quý khách hàng đã đặt. Quý khách hàng đồng ý rằng, trong những trường hợp có sự thay đổi về chương trình phim hoặc bất khả kháng, CINESTAR có quyền hoàn
                     trả lại bất kỳ vé nào từ việc mua bán qua Website này hoặc thực hiện việc chuyển vé cho quý khách hàng qua suất chiếu khác theo yêu cầu của quý khách hàng.</p>
@@ -1729,7 +1871,8 @@
                 <p>CINESTAR không sử dụng, không chuyển giao, cung cấp hay tiết lộ cho bên thứ ba nào về thông tin cá nhân của thành viên khi không có sự cho phép, đồng ý từ thành viên (quy định cụ thể tại Chính Sách Bảo Mật thông tin khách hàng được đăng
                     tải trên Website này). Mọi thông tin giao dịch sẽ được bảo mật ngoại trừ trường hợp buộc phải cung cấp theo yêu cầu của tòa án, cơ quan nhà nước có thẩm quyền hoặc tuân theo quy định của pháp luật.</p>
 
-                <p>Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân thành viên, CINESTAR sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng điều tra xử lý kịp thời và thông báo cho quý khách hàng được biết.</p>
+                <p>Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân thành viên, CINESTAR sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng điều tra xử lý kịp thời và thông báo cho quý khách hàng được biết.
+                </p>
 
                 <p>Chi tiết quy định về bảo mật thông tin của thành viên được thực hiện theo&nbsp;<a href="https://www.adayroi.com/help/chinh-sach-bao-mat-thong-tin">Chính Sách Bảo
                         Mật</a>&nbsp;đăng tải trên Website.</p>
@@ -2147,7 +2290,8 @@
                     không thể đáp ứng cho Khách Hàng trong vòng 30 ngày, GUBCINEMA sẽ thông báo cho Khách Hàng về thời gian sớm nhất có thể trong phạm vi mà GUBCINEMA có thể cung cấp cho Khách Hàng các thông tin yêu cầu. Lưu ý rằng GUBCINEMA có thể miễn
                     trừ một số loại dữ liệu cá nhân khỏi việc yêu cầu truy cập của Khách Hàng.</p>
 
-                <p>GUBCINEMA bảo lưu quyền từ chối chỉnh sửa dữ liệu cá nhân của Khách Hàng dựa theo với các quy định đã nêu trong các luật liên quan, yêu cầu và/hoặc cho phép một tổ chức từ chối chỉnh sửa dữ liệu cá nhân trong một số trường hợp quy định.</p>
+                <p>GUBCINEMA bảo lưu quyền từ chối chỉnh sửa dữ liệu cá nhân của Khách Hàng dựa theo với các quy định đã nêu trong các luật liên quan, yêu cầu và/hoặc cho phép một tổ chức từ chối chỉnh sửa dữ liệu cá nhân trong một số trường hợp quy định.
+                </p>
 
                 <p>Khi Khách Hàng truy cập vào CINESTAR, sự truy cập của Khách Hàng và bất kỳ vấn đề phát sinh nào liên quan đến sự bảo mật đều tuân theo các điều khoản trong&nbsp;Quy Định Chung, Chính Sách Bảo Mật,&nbsp;
                     <a href="https://123phim.vn/thoa-thuan-su-dung">Điều Kiện và Điều Khoản Giao Dịch</a>, bao gồm giới hạn thiệt hại, cách giải quyết các vấn đề phát sinh, và việc áp dụng luật Việt Nam.</p>
@@ -2173,7 +2317,8 @@
 
                 <p>Trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát Thông Tin Khách Hàng, gây ảnh hưởng xấu đến Khách Hàng, GUBCINEMA sẽ ngay lập tức thông báo cho Khách Hàng và trình vụ việc cho cơ quan chức năng điều tra xử lý.</p>
 
-                <p>Khách Hàng có nghĩa vụ bảo mật tên đăng ký, mật khẩu và hộp thư điện tử của mình. GUBCINEMA sẽ không chịu trách nhiệm dưới bất kỳ hình thức nào đối với các thiệt hại, tổn thất (nếu có) do Khách Hàng không tuân thủ quy định bảo mật này.</p>
+                <p>Khách Hàng có nghĩa vụ bảo mật tên đăng ký, mật khẩu và hộp thư điện tử của mình. GUBCINEMA sẽ không chịu trách nhiệm dưới bất kỳ hình thức nào đối với các thiệt hại, tổn thất (nếu có) do Khách Hàng không tuân thủ quy định bảo mật này.
+                </p>
 
                 <p>Khách Hàng tuyệt đối không được có các hành vi sử dụng công cụ, chương trình để can thiệp trái phép vào hệ thống hay làm thay dổi dữ liệu của CINESTAR. Trong trường hợp CINESTAR phát hiện Khách Hàng có hành vi cố tình giả mạo, gian lận,
                     phát tán thông tin cá nhân trái phép… CINESTAR có quyền chuyển thông tin cá nhân của Khách Hàng cho các cơ quan có thẩm quyền để xử lý theo quy định của pháp luật.
