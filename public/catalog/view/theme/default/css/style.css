@@ -2300,7 +2300,7 @@ svg:not(:root) {
   position: relative;
   width: auto;
 }
-.input-but input[type="button"] {
+.input-but button[type="submit"] {
   font-family: "Futurab";
   font-weight: normal;
   font-size: 24px;
@@ -2316,7 +2316,7 @@ svg:not(:root) {
   border: none;
   -webkit-appearance: none;
 }
-.input-but input[type="button"]:hover {
+.input-but button[type="submit"]:hover {
   background-color: #e00d7a;
 }
 

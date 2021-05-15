@@ -1,63 +1,421 @@
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title> <%-title%></title>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-</head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/GUB/home">GUB</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link <%- title === 'Home' ? 'active' : '' %>" aria-current="page" href="/GUB/home">Home</a>
-            </li>
-            
-              <% if(currentUser){ %>
-              <li class="nav-item">
-                <a class="nav-link <%- title ===  currentUser.Name ? 'active' : '' %>" href="/GUB/profile"><%- currentUser.Name %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/GUB/profile/logout">Log out</a>
-              </li>
-              <% if(currentUser.Category == 'admin'){ %>
-                <li class="nav-item">
-                  <a class="nav-link <%- title ===  'Admin' ? 'active' : '' %>" href="/GUB/admin">Admin</a>
-                </li>
-                <%}%>
-              <%}else{%>
-                <li class="nav-item">
-                  <a class="nav-link <%- title === 'Log in' ? 'active' : '' %>" href="/GUB/user/login">Log in</a>
-                </li>
-                
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle <%- title === 'Register' ? 'active' : '' %>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Register
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="/GUB/user/admin/register">Admin</a></li>
-                    <li><a class="dropdown-item" href="/GUB/user/customer/register">Customer</a></li>
-                  </ul>
-                </li>
-               
-              <%}%>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-  <%-body%>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<% if(currentUser && currentUser.Category == 'admin'){ %>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title> <%-title%></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    </head>
+    <body>
+        <%-body%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     </body>
   </html>
+<% }else{ %>
+    <!DOCTYPE HTML>
+    <html lang="vi">
+    
+    <head>
+        <meta charset="utf-8" />
+        <title id="hdtitle">GUBCinema</title>
+        <meta name="description" content="GUBCinema" />
+        <meta name="keywords" content="GUBCinema" />
+        <meta name="author" content="GUBCinema">
+        <meta property="og:url" content="">
+        <meta property="og:title" content="GUBCinema">
+        <meta property="og:description" content="GUBCinema">
+        <meta property="og:site_name" content="GUBCinema">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="vi_VN">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="google-site-verification" content="YuTiM7jHui55k8Zx2X9vwfCyP9rylFkgxyGeseNR8pk" />
+        <link rel="SHORTCUT ICON" href="/catalog/view/theme/default/images/favicon.ico">
+        <link href="/catalog/view/theme/default/css/style.css?v=1.6" rel="stylesheet" type="text/css">
+        
+        <link href="/catalog/view/theme/default/css/validationEngine.jquery.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="/catalog/view/theme/default/js/jquery.js"></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/history.js"></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/common.js"></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/slide.js"></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/scroll.js"></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/load.js"></script>
+    
+        <script type="text/javascript" src="/catalog/view/theme/default/js/jquery.validationEngine.js"></script>
+        <script type="text/javascript" src="/catalog/view/theme/default/js/validate.js"></script>
+    
+    </head>
+    
+    <body id="home-page">
+       
+        <!-- Khi chưa đăng nhập, trực tiếp vào đây -->
+    
+    
+        <div class="nav-click"></div>
+    
+        <!--HEAD-->
+        <div class="header">
+            <div class="logo-mb" style="background-image:url(/pictures/home.png);"></div>
+            <div class="top">
+                
+                <!--//logo-part//-->
+                <div class="logo" style="background-image:url(/pictures/home.png);"></div>
+                <!--//logo-part//-->
+                <!--//facilities-part//-->
+                <div class="facilities-nav">
+                    <!--search-->
+                    <div class="search-form">
+                        <div class="form-row-search">
+                            <form onsubmit="return false;" action="" id="search" method="get">
+                                <input id="qsearch" type="text" class="search-field" value="Tìm kiếm...">
+                                <input id="defaultvalue" type="hidden" class="search-field" value="Tìm kiếm...">
+                                <input type="hidden" id="href_search" value="">
+                            </form>
+                        </div>
+                        <a href="javascript:void(0);" class="search">Search</a>
+                    </div>
+                    <!--search-->
+                </div>
+                <!--//facilities-part//-->
+    
+                <!--menu-->
+                <div class="navigation">
+                    <a class="link-home" href="/GUB/home">
+                    </a>
+                    <div class="nav">
+                        <ul>
+                            <li>
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/movies/nowplaying">
+                                    <h1>Phim</h1>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-title=" LỊCH CHIẾU GUBCINEMA" data-description="LỊCH CHIẾU PHIM TẠI GUBCINEMA" data-keyword="GUBCINEMA; LỊCH CHIẾU" href="lichchieu">
+                                    <h1>Lịch chiếu</h1>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="rapvagia">
+                                    <h1>Rạp và giá</h1>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!--menu-->
+            </div>
+        </div>
+        <!--HEAD-->
+    
+        <!--CONTAINER-->
+        <div class="container">
+            <!-- <div class="container no-scroll"> khi mở xem thông tin cá nhân không cho cuộn-->
+            <div class="container-bg">
+    
+                <div class="scroll-down-desktop">scroll down</div>
+    
+    
+                <!--USER-SECTION-->
+                <div class="register-content">
+                    <div class="register-wrap">
+                        <!--//user-nav//-->
+                        <ul>
+                            <li class="btn-register"><a data-tmp="Thông tin thành viên" href="javascript:void(0);"><% if(currentUser){%> Profile <%}else{%> Register <%}%></a></li>
+                            <li class="btn-login"><a data-tmp="Đăng xuất" href="javascript:void(0);"><% if(currentUser){%> Setting <%}else{%> Sign in <%}%></a></li>
+                        </ul>
+                        
+    
+                        <!--//user-form//-->
+                        <div class="block-user">
+                            <% if(currentUser){ %>
+                            <!--register-tab-->
+                             <div class="tab-register">
+        <div class="user-form register">
+            <div class="icon-arrow"></div>
+            <h3 class="user-title">Please enter your information</h3>
+            <form id="register-top" method="POST" action="/GUB/profile">
+                
+                <div class="require-col">
+                    <div class="input-text name">
+                        <span class="focus-text"><%- currentUser.Name %></span>
+                        <input id="member_name" name="name" type="text" value="" />
+                    </div>
+                    
+                   
+    
+                    <div class="input-text tel">
+                        <span class="focus-text"><%- currentUser.Tel %></span>
+                        <input id="member_phone" name="tel" type="text" value="" />
+                    </div>
+                    <div class="input-text username">
+                        <span class="focus-text"><%- currentUser.Email %></span>
+                        <input id="member_username" name="email" type="text" value="" />
+                    </div>
+                    <div class="input-text password">
+                        <span class="focus-text">OLD PASSWORD (*)</span>
+                        <input id="member_password" name="oldpassword" type="password"  />
+                    </div>
+                    <div class="input-text password">
+                        <span class="focus-text">PASSWORD (*)</span>
+                        <input id="member_password" name="newpassword" type="password"  />
+                    </div>
+                    <div class="input-text confirmpass">
+                        <span class="focus-text">CONFIRM PASSWORD (*)</span>
+                        <input id="member_password_confirm" name="confirmpassword" type="password"  />
+                    </div>
+
+                    
+                    <div class="input-but">
+                        <button type="submit"  id="btn-register-top" >Change</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+                              </div>
+                            <% }else{ %>
+    
+            
+    <!--register-tab-->
+                            <div class="tab-register">
+        <div class="user-form register">
+            <div class="icon-arrow"></div>
+            <h3 class="user-title">Please enter your information</h3>
+            <form id="register-top" method="POST" action="/GUB/user/register">
+                <div class="require-col">
+                    <label class="gender"><input type="radio" name="category" value="admin"><span
+                            class="gender-name">Admin</span><span class="gender-shape"></span></label>
+                    <label class="gender"><input type="radio" name="category" value="customer" /><span
+                            class="gender-name">Customer</span><span class="gender-shape"></span></label>
+                </div>
+                <div class="require-col">
+                    <div class="input-text name">
+                        <span class="focus-text">NAME</span>
+                        <input id="member_name" name="name" type="text" value="" />
+                    </div>
+                    
+                   
+    
+                    <div class="input-text tel">
+                        <span class="focus-text">TEL (*)</span>
+                        <input id="member_phone" name="tel" type="text" value="" />
+                    </div>
+                    <div class="input-text username">
+                        <span class="focus-text">EMAIL (*)</span>
+                        <input id="member_username" name="email" type="text" value="" />
+                    </div>
+    
+                
+                    <div class="input-text password">
+                        <span class="focus-text">PASSWORD (*)</span>
+                        <input id="member_password" name="password" type="password" value="" />
+                    </div>
+                    <div class="input-text confirmpass">
+                        <span class="focus-text">CONFIRM PASSWORD (*)</span>
+                        <input id="member_password_confirm" name="confirmpassword" type="password" value="" />
+                    </div>
+                    
+                    <div class="input-but">
+                        <button type="submit"  id="btn-register-top" >Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+                            </div>
+                            <%}%>
+                            
+                            <!--register-tab-->
+    
+                            <!--login-tab-->
+                            <div class="tab-login">
+                                <% if(currentUser){ %>
+                                    <div class="user-form login">
+                                        <div class="icon-arrow"></div>
+                                    
+                                        <form id="login-top" method="GET" action="/GUB/profile/logout">
+                                            <div class="require-col">
+                                                <div class="input-but">
+                                                    <button type="submit" class="btn btn-warning" >Log out</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                
+                                <% }else{ %>
+                                    <div class="user-form login">
+                                        <div class="icon-arrow"></div>
+                                        <h3 class="user-title">Please enter your email address and password</h3>
+                                        <form id="login-top" method="POST" action="/GUB/user/login">
+                                            <div class="require-col">
+                                                <div class="input-text username">
+                                                    <input name="email" id="login_email" type="text" />
+                                                </div>
+                                                <div class="input-text password">
+                                                    <input name="password" id="login_password" type="password"  />
+                                                </div>
+                                                <div class="input-but">
+                                                    <button type="submit" class="btn btn-warning" >Log in</button>
+                                                    <a class="user-link" href="javascript:void(0);">Recovery account</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+        
+                                    <div class="user-form forgot">
+                                        <div class="icon-arrow"></div>
+                                        <h3 class="user-title">Please enter your email address and phone below.<br />You will receive a link to reset your password</h3>
+                                        <form id="forgot-top" action="/GUB/user/revive" method="POST">
+                                            <div class="require-col">
+                                                <div class="input-text username">
+                                                    <input id="login_email" name="email" type="text"  />
+                                                </div>
+                                                <div class="input-text address">
+                                                    <input id="login_email" name="tel" type="text"  />
+                                                </div>
+                                                
+                                                <div class="input-but">
+                                                    <button type="submit" id="btn-send-top" >Send</button>
+                                                    <a class="user-link" href="javascript:void(0);">Quay lại trang đăng nhập</a>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <%}%>
+                            </div>
+                            <!--login-tab-->
+                        </div>
+                        <!--//user-form//-->
+    
+                    </div>
+                </div>
+                <!--USER-SECTION-->
+    
+                <!--SLIDER-->
+                <div class="slider-home" data-time="5000">
+                    <div class="slide-bg">
+                        <div class="bg-home">
+                            <a href="http://cinestar.com.vn/khuyenmai/c-monday">
+                                <img src="/pictures/c'monday.jpg" alt="bg" /></a>
+                        </div>
+                        <div class="bg-home">
+                            <a href="http://cinestar.com.vn/khuyenmai/combobigstaruudaithuba">
+                                <img src="/pictures/capture.png" alt="bg" /></a>
+                        </div>
+                        <div class="bg-home">
+                            <a href="http://cinestar.com.vn/khuyenmai/c-member">
+                                <img src="/pictures/c'member.jpg" alt="bg" /></a>
+                        </div>
+                        <div class="bg-home">
+                            <a href="http://cinestar.com.vn/khuyenmai/c-student">
+                                <img src="/pictures/z2161740555387_88fc044837bea7695ee9ec8320a39cef.jpg" alt="bg" /></a>
+                        </div>
+                        <div class="bg-home">
+                            <a href="http://cinestar.com.vn/khuyenmai/c-ten">
+                                <img src="/pictures/z2161740555616_cf6d683f88aa9447af57b89917e84acb.jpg" alt="bg" /></a>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('.slider-home img').click(function() {
+                            if ($(this).parent().attr('href')) {
+                                window.location.href = $(this).parent().attr('href');
+                            }
+                        });
+                    });
+                </script>
+                <!--SLIDER-->
+    
+    
+    
+                <!--CONTENT-PAGE-->
+                <%- body %>
+                    <!--CONTENT-PAGE-->
+    
+                    <!--BOTTOM-->
+                    <div class="bottom">
+    
+                        <div class="bottom-nav">
+                            <div class="logo-footer" style="background-image:url(/pictures/home.png);"></div>
+    
+                            <div class="bottom-wrap">
+                                
+    
+                                <div class="cinestart-price">
+                                    <h2>Hệ thống rạp</h2>
+                                    <ul>
+                                        <li class='current' data-name="8f3a5832-8340-4a43-89bc-6653817162f1"><a href="rapvagia/8f3a5832-8340-4a43-89bc-6653817162f1">GUBCinema Quốc Thanh</a>
+                                        </li>
+                                        <li class='current' data-name="e08f986a-1937-419e-b1b1-759b7c74728b"><a href="rapvagia/e08f986a-1937-419e-b1b1-759b7c74728b">GUBCinema Đà Lạt</a>
+                                        </li>
+                                        <li class='current' data-name="667c7727-857e-4aac-8aeb-771a8f86cd14"><a href="rapvagia/667c7727-857e-4aac-8aeb-771a8f86cd14">GUBCinema Hai Bà
+                                                Trưng</a></li>
+                                        <li class='current' data-name="cf13e1ce-2c1f-4c73-8ce5-7ef65472db3c"><a href="rapvagia/cf13e1ce-2c1f-4c73-8ce5-7ef65472db3c">GUBCinema Bình Dương</a>
+                                        </li>
+                                        <li class='current' data-name="f8a60463-5c34-49a9-9ae8-52081e387bb8"><a href="rapvagia/f8a60463-5c34-49a9-9ae8-52081e387bb8">GUBCinema Huế</a></li>
+                                        <li class='current' data-name="8f54df74-3796-42ea-896e-cd638eec1fe3"><a href="rapvagia/8f54df74-3796-42ea-896e-cd638eec1fe3">GUBCinema Mỹ Tho</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="cinestart">
+    
+                                    <h2>GUBCinema</h2>
+                                    <ul>
+                                        <li data-name="212_2"><a href="phimdangchieu">Phim đang chiếu</a></li>
+                                        <li data-name="212_1"><a href="phimsapchieu">Phim sắp chiếu</a></li>
+                                        <li data-name="212_3"><a href="lichchieu">Lịch chiếu</a></li>
+                                  
+                                    </ul>
+                                </div>
+    
+                               
+    
+                        </div>
+    
+                    
+    
+                    </div>
+                    <!--BOTTOM-->
+    
+            </div>
+    
+            <!--FOOTER-->
+            <div class="footer">
+                <!--//payment-part//--->
+                
+                <!--//payment-part//--->
+                <!--//copyright-part//-->
+                <div class="copyright">
+                    <p>
+                        <a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=51406" target="_blank"><img width="150px" src="/catalog/view/theme/default/images/dathongbao.png" alt=" đã được duyệt"></a>
+                    </p>
+                    <p>CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM – RẠP CHIẾU PHIM NGÔI SAO<br> Địa chỉ: 135 Hai Bà Trưng, phường Bến Nghé, Quận 1, TP.HCM<br> Giấy CNĐKDN số: 0312742744, đăng ký lần đầu ngày 18/04/2014, đăng ký thay đổi lần thứ 2 ngày 15/09/2014,
+                        cấp bởi Sở KH&ĐT TP.HCM<br><br> 2015 © <strong>GUBCinema</strong>. All rights reserved.</p>
+                </div>
+                <!--//copyright-part//-->
+            </div>
+            <!--FOOTER-->
+    
+        </div>
+        <!--CONTAINER-->
+    
+        <!--//ORDER-SECTION//-->
+    
+            <!--//movie-part//-->
+    
+        </div>
+        <!--//ORDER-SECTION//-->
+    
+      
+        <div class="overlay-menu"></div>
+        <div class="go-top"></div>
+        <div class="scroll-down"></div>
+        <input type="hidden" value="" id="BASE_URL" />
+        <script type="text/javascript" src="/catalog/view/theme/default/js/btq.js?v=25"></script>
+    </body>
+    
+    </html>
+<% } %>
+

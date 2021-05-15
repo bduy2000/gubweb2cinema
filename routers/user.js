@@ -32,15 +32,8 @@ router.post('/login',asyncHandler (async function(req,res){
 }));
 
 
-router.get('/customer/register',function(req,res){
-    res.locals.title = 'Register';
-    res.render('user/register');
-});
-
-
-
-router.post('/customer/register',asyncHandler (async function(req,res){
-    const {name,email,tel,password,confirmpassword} = req.body;
+router.post('/register',asyncHandler (async function(req,res){
+    const {name,email,tel,password,confirmpassword,category} = req.body;
     const finduser = await User.findbyEmail(email);
      if(password != confirmpassword){
       res.send('Those passwords didn’t match. Try again');
@@ -49,13 +42,13 @@ router.post('/customer/register',asyncHandler (async function(req,res){
      }else{
      const code = randomString(4);
      const hash = brcypt.hashSync(password,10);
-     const found = await User.Register(name,email,hash,tel,'customer',code);
+     const found = await User.Register(name,email,hash,tel,category,code);
         if(found){
             const context ="To register click here : localhost:3000/GUB/send?code="+code+"&userid="+found.id;
             Email.send(email,'Register',context);
             res.send(`Check your email to vertify your account`);
             }else{
-                res.render('user/register');
+                res.redirect('/GUB/home');
             }
      }             
  }));
@@ -63,33 +56,7 @@ router.post('/customer/register',asyncHandler (async function(req,res){
 
 
 
-//admin
-router.get('/admin/register',function(req,res){
-    res.locals.title = 'Register';
-    res.render('user/register');
-});
 
-router.post('/admin/register',asyncHandler (async function(req,res){
-    
-    const {name,email,tel,password,confirmpassword} = req.body;
-   const finduser = await User.findbyEmail(email);
-    if(password != confirmpassword){
-     res.send('Those passwords didn’t match. Try again');
-    }else if(finduser){
-        res.send('This account exist');
-    }else{
-    const code = randomString(4);
-    const hash = brcypt.hashSync(password,10);
-    const found = await User.Register(name,email,hash,tel,'admin',code);
-       if(found){
-           const context ="To register click here : localhost:3000/GUB/send?code="+code+"&userid="+found.id;
-           Email.send(email,'Register',context);
-           res.send(`Check your email to vertify your account`);
-           }else{
-               res.render('user/register');
-           }
-    }             
-}));
 
 
 //revive
@@ -105,45 +72,16 @@ router.post('/revive',asyncHandler(async function(req, res) {
     if(user){
         if(tel == user.Tel){
             const code = randomString(4);
-            user.Code = code;
+            const hash = brcypt.hashSync(code,10);
+            user.Password = hash;
             await user.save();
-            const context ="To revive click here : localhost:3000/GUB/user/changepass?code="+code+"&userid="+user.id;
+            const context ="Your password was changed : "+ code;
             Email.send(email,'(GUB) Revive your account ',context);
         }
     }
     res.send('Check your email to revive your account');
 }));
 
-// change pass
-router.get('/changepass', asyncHandler(async function(req, res) {
-    res.locals.title = 'ChangePass';
-    const {userid,code} = req.query;
-    const user = await User.findbyId(userid);
-    if(user){
-        if(code == user.Code){
-            req.session.UserId = userid;
-            res.render('user/changepass');
-        }
-    }
-    res.send('error');
-    
-}));
-
-
-router.post('/changepass',asyncHandler(async function(req, res) {
-    const { password ,confirmpassword} = req.body;
-    if(password == confirmpassword){
-        const user = req.user;
-        const hash = brcypt.hashSync(password,10);
-        user.Password = hash;
-        user.Code = null;
-        await user.save();
-        res.redirect('/GUB/profile');
-    }else{
-        res.render('user/changepass');
-    }
-    
-}));
 
 
 module.exports = router;// do router cung la 1 cai module nen can export no ra

@@ -9,8 +9,9 @@ router.use(function(req,res,next){
 })
 
 router.get('/home',function(req,res){
-res.render('home');
+res.render('gubcinema/home/home');
 });
+
 
 router.get('/admin',function(req,res){
     res.locals.title = 'Admin';
@@ -18,6 +19,7 @@ router.get('/admin',function(req,res){
     });
 
 
+    
 router.get('/send',asyncHandler (async function(req,res){
     const {code,userid}= req.query;
     User.ResetCode(userid);
