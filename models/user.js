@@ -30,7 +30,7 @@ const User = db.define('User', {
   });
 
 
-User.ResetCode = async function(id,code){
+User.ResetCode = async function(code,id){
   const user = await User.findByPk(id);
   if(user){
     if(code == user.Code){
