@@ -31,8 +31,8 @@ router.get('/movie',asyncHandler (async function(req,res){
         })); 
 
 router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req, res) {
-    const {name,time,releasedate,decription} = req.body;
-    const movie = await Movie.create({Name: name , Time: time, ReleaseDate: releasedate , Decription: decription});
+    const {name,time,releasedate,decription,category} = req.body;
+    const movie = await Movie.create({Name: name , Time: time, ReleaseDate: releasedate , Decription: decription,Category: category});
     if(movie){
         movie.Poster = req.file.buffer;
         await movie.save();
@@ -54,7 +54,7 @@ router.get('/movie/update/:id',asyncHandler (async function(req,res){
 
 router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async function(req, res) {
     const id = req.params.id;
-    const {name,time,releasedate,decription} = req.body;
+    const {name,time,releasedate,decription,category} = req.body;
     const movie = await Movie.findByPk(id);
     if(movie){
         if(name){
@@ -65,6 +65,9 @@ router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async funct
         }
         if(releasedate){
             movie.ReleaseDate = releasedate;
+        }
+        if(category){
+            movie.Category = category;
         }
         if(req.file){
             movie.Poster = req.file.buffer;

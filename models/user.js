@@ -30,12 +30,14 @@ const User = db.define('User', {
   });
 
 
-User.ResetCode = async function(id){
-  User.update({Code:null},{
-      where:{
-    id,
+User.ResetCode = async function(id,code){
+  const user = await User.findByPk(id);
+  if(user){
+    if(code == user.Code){
+    user.update({Code:null});
+    return user;
+    }
   }
-});
 }
 
 User.findbyEmail = async function(Email){

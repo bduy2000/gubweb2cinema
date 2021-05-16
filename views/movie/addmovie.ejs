@@ -16,10 +16,7 @@
 					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên phim">
 				</div>
 			
-				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
-					<span class="label-input100">Release Date</span>
-					<input class="input100" type="date" name="releasedate" placeholder="Vui lòng nhập ngày công chiếu"/>
-				</div>
+	
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Time</span>
@@ -29,6 +26,22 @@
 					<span class="label-input100">Decription</span>
 					<textarea class="input100" name="decription" placeholder="Vui lòng điền mo ta của phim "></textarea>
 				</div>
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Release Date</span>
+					<input class="input100" type="date" name="releasedate" placeholder="Vui lòng nhập ngày công chiếu"/>
+				</div>
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<label for="category" class="form-label">Category</label>
+					<div style="height: 30px;width: 300px" class="dropdown dropdown">
+					   
+						<select id="category" name="category" class="dropdown-select">
+							<option value="nowplaying">Now Playing</option>
+							<option value="comingsoon">Comming Soon</option>
+							<option value="hot">Hot</option>
+						</select>
+					 </div>
+				</div>
+				
 				<div class="wrap-input validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Poster</span>
 								<img style="width:200px;height:200px;display: block; margin-left: auto; margin-right: auto" id="output" />

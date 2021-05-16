@@ -88,7 +88,17 @@
                         <ul>
                             <li>
                                 <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/movies/nowplaying">
-                                    <h1>Phim</h1>
+                                    <h1>Phim đang chiếu</h1>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/movies/comingsoon">
+                                    <h1>Phim sắp chiếu</h1>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/movies/hot">
+                                    <h1>Phim hot</h1>
                                 </a>
                             </li>
                             <li>
@@ -346,17 +356,10 @@
                                 <div class="cinestart-price">
                                     <h2>Hệ thống rạp</h2>
                                     <ul>
-                                        <li class='current' data-name="8f3a5832-8340-4a43-89bc-6653817162f1"><a href="rapvagia/8f3a5832-8340-4a43-89bc-6653817162f1">GUBCinema Quốc Thanh</a>
+                                        <% cinemas.forEach(function(cinema) { %>
+                                        <li class='current' data-name="8f3a5832-8340-4a43-89bc-6653817162f1"><a href="rapvagia/8f3a5832-8340-4a43-89bc-6653817162f1"><%- cinema.Name %></a>
                                         </li>
-                                        <li class='current' data-name="e08f986a-1937-419e-b1b1-759b7c74728b"><a href="rapvagia/e08f986a-1937-419e-b1b1-759b7c74728b">GUBCinema Đà Lạt</a>
-                                        </li>
-                                        <li class='current' data-name="667c7727-857e-4aac-8aeb-771a8f86cd14"><a href="rapvagia/667c7727-857e-4aac-8aeb-771a8f86cd14">GUBCinema Hai Bà
-                                                Trưng</a></li>
-                                        <li class='current' data-name="cf13e1ce-2c1f-4c73-8ce5-7ef65472db3c"><a href="rapvagia/cf13e1ce-2c1f-4c73-8ce5-7ef65472db3c">GUBCinema Bình Dương</a>
-                                        </li>
-                                        <li class='current' data-name="f8a60463-5c34-49a9-9ae8-52081e387bb8"><a href="rapvagia/f8a60463-5c34-49a9-9ae8-52081e387bb8">GUBCinema Huế</a></li>
-                                        <li class='current' data-name="8f54df74-3796-42ea-896e-cd638eec1fe3"><a href="rapvagia/8f54df74-3796-42ea-896e-cd638eec1fe3">GUBCinema Mỹ Tho</a>
-                                        </li>
+                                        <% }) %>
                                     </ul>
                                 </div>
                                 <div class="cinestart">

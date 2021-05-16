@@ -1,24 +1,23 @@
 <!--CONTENT-PAGE-->
 <div class="content-page">
-
     <!--MOVIE-TAB-->
-
+    
     <div class="tab-movie">
-        <div class="" data-open="coming">
+        <div class="" data-open="sepcial">
             <div class="col-inr">
-                <% comingsoons.forEach(function(comingsoon) { %>
+                <% hots.forEach(function(hot) { %>
                 
                 <div class="film-item cl-ppl t-2d">
                     <a href="phim/49d55121-5177-4811-9aee-91bfcfc5acb5">
                         <div class="film-item-pic">
-                            <img src="/GUB/movie/picture/<%- comingsoon.id %>" alt="THIÊN THẦN HỘ MỆNH (C18)" />
+                            <img src="/GUB/movie/picture/<%- hot.id %>" alt="THIÊN THẦN HỘ MỆNH (C18)" />
                         </div>
                         <div class="film-item-txt">
-                            <h3><%- comingsoon.Name %></h3>
+                            <h3><%- hot.Name %></h3>
                             <p>
-                                <%- comingsoon.Decription %>
+                                <%- hot.Decription %>
                             </p>
-                            <p>Khởi chiếu: Từ <%- comingsoon.ReleaseDate %></p>
+                            <p>Khởi chiếu: Từ <%- hot.ReleaseDate %></p>
                         </div>
                     </a>
                     <div class="film-item-type">

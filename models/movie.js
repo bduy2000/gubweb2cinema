@@ -19,6 +19,9 @@ const Movie = db.define('Movie', {
     Decription:{
         type: DataTypes.TEXT,
     },
+    Category:{
+        type: DataTypes.STRING,
+    },
   });
 
   module.exports=Movie;
