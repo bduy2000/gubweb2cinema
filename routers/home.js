@@ -54,4 +54,19 @@ router.get('/send',asyncHandler (async function(req,res){
    
 }));
 
+router.get('/khuyenmai',asyncHandler (async function(req,res){
+    const cinemas = await Cinema.findAll();
+    const nowplayings = await Movie.findAll({where:{ Category: 'nowplaying'}});
+    res.render('gubcinema/home/khuyenmai',{nowplayings,cinemas});
+    }));
+    router.get('/rapvagia',asyncHandler (async function(req,res){
+        const cinemas = await Cinema.findAll();
+    res.render('gubcinema/home/rapvagia',{cinemas});
+    }));
+
+router.get('/gioithieu',asyncHandler (async function(req,res){
+    const cinemas = await Cinema.findAll();
+    const nowplayings = await Movie.findAll({where:{ Category: 'nowplaying'}});
+res.render('gubcinema/home/gioithieu',{nowplayings,cinemas});
+}));
 module.exports = router;// do router cung la 1 cai module nen can export no ra

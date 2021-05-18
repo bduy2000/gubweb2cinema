@@ -1,0 +1,121 @@
+<!-- Film Detail Page -->
+<!--CONTENT-PAGE-->
+<div class="content-page">
+
+    
+
+    <!--FILM-DETAIL-->
+    <div class="film-details-content">
+        <div class="film-details-wrap">
+
+            <div class="film-item t-2d">
+                <div class="film-item-pic">
+                    <img src="/GUB/movie/picture/<%- movie.id %>" alt="<%- movie.Name %>" />
+                </div>
+                <div class="film-item-txt">
+                    <h3><%- movie.Name %></h3>
+
+                    <div class="film-overview"><span class="l-title">Khởi chiếu:</span><span class="l-value">Từ <%- movie.ReleaseDate %></span></div>
+                    <div class="film-item-type">
+                        <span class="icon-2d"></span><span class="icon-am3d"></span><span class="icon-3d"></span>
+                    </div>
+                    <p><%- movie.Decription %></p>
+                    <div class="film-overview"><span class="l-title">Đánh giá:</span>
+                        <span class="l-comment"></span><span class="l-comment"></span><span class="l-comment"></span><span class="l-comment"></span><span class="l-comment"></span> </div>
+
+                    <div class="film-item-but">
+        
+                        <a class="cart-btn fontsize14" href="lichchieu/0c8b1b99-7b33-43d0-aeaa-9c54e19cf2c7">Mua vé</a>
+                        <ul class="l-social">
+                            <li>Chia sẻ</li>
+                            <li class="l-facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=phim/0c8b1b99-7b33-43d0-aeaa-9c54e19cf2c7" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=600');return false;">Facebook</a></li>
+                            <li class="l-google"><a href="https://plus.google.com/share?url=phim/0c8b1b99-7b33-43d0-aeaa-9c54e19cf2c7" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=600');return false;">Google</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--FILM-DETAIL-->
+
+
+    <!--PLAYING-MOVIE-->
+    <div class="section-title">
+        <h2>HOT MOVIE IN YEAR</h2>
+    </div>
+    <div class="movie-content on-page">
+        <div class="movie-wrap">
+            <div class="movie-slide">
+                <% hots.forEach(function(hot) { %>
+                <div class="movie-item n_2d">
+                    <div class="movie-pic"><img class="lazyload" data-src="/GUB/movie/picture/<%- hot.id %>" alt="<%- hot.Name %>" /></div>
+                    <div class="movie-txt">
+                        <h3><%- hot.Name %></h3>
+                    </div>
+                    <div class="movie-over">
+                        <a href="/GUB/movies/<%- hot.id %>">
+                            <p><%- hot.Decription %></p>
+                            <span class="atc" style="display: block;">...</span>
+                            <span class="detail-link">See more</span>
+                        </a>
+                      
+                        <a class="cart-btn fontsize13" href="lichchieu/0c8b1b99-7b33-43d0-aeaa-9c54e19cf2c7">Mua vé</a>
+                    </div>
+                </div>
+                <% }) %>
+
+            </div>
+        </div>
+    </div>
+    <!--PLAYING-MOVIE-->
+
+
+    <!--PROMOTION-SECTION-->
+    <div class="promotion-content">
+        <div class="promotion-wrap">
+
+            <div class="promotion-title">
+                <h2>Ưu đãi</h2>
+            </div>
+
+            <div class="promotion-slide">
+
+                <div class="promotion-item">
+                    <a href="khuyenmai/c-monday">
+                        <div class="promotion-pic"><img class="lazyload" data-src="/pictures/c_monday.jpg" align="C'MONDAY - ƯU ĐÃI THỨ 2" /></div>
+                    </a>
+                </div>
+
+                <div class="promotion-item">
+                    <a href="khuyenmai/combobigstaruudaithuba">
+                        <div class="promotion-pic"><img class="lazyload" data-src="/pictures/big-star-_-trang-chủ-web.jpg" align="COMBO BIG STAR - ƯU ĐÃI THỨ BA " /></div>
+                    </a>
+                </div>
+
+                <div class="promotion-item">
+                    <a href="khuyenmai/c-member">
+                        <div class="promotion-pic"><img class="lazyload" data-src="/pictures/hinhnenCTKM/c'member.jpg" align="C'member - ngày hội thành viên" /></div>
+                    </a>
+                </div>
+
+                <div class="promotion-item">
+                    <a href="khuyenmai/c-student">
+                        <div class="promotion-pic"><img class="lazyload" data-src="/pictures/hinhnenCTKM/hssv.jpg" align="TẸT GA 45K SUỐT TUẦN TOÀN HỆ THỐNG" /></div>
+                    </a>
+                </div>
+
+                <div class="promotion-item">
+                    <a href="khuyenmai/c-ten">
+                        <div class="promotion-pic"><img class="lazyload" data-src="/pictures/c_ten.jpg" align="C'Ten - Khuyến mãi tại mốc 10H" /></div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--PROMOTION-SECTION-->
+
+</div>
+<!--CONTENT-PAGE-->

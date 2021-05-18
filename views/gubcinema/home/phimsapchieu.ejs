@@ -9,7 +9,7 @@
                 <% comingsoons.forEach(function(comingsoon) { %>
                 
                 <div class="film-item cl-ppl t-2d">
-                    <a href="phim/49d55121-5177-4811-9aee-91bfcfc5acb5">
+                    <a href="/GUB/movies/<%- comingsoon.id %>">
                         <div class="film-item-pic">
                             <img src="/GUB/movie/picture/<%- comingsoon.id %>" alt="THIÊN THẦN HỘ MỆNH (C18)" />
                         </div>
@@ -17,6 +17,7 @@
                             <h3><%- comingsoon.Name %></h3>
                             <p>
                                 <%- comingsoon.Decription %>
+                                
                             </p>
                             <p>Khởi chiếu: Từ <%- comingsoon.ReleaseDate %></p>
                         </div>

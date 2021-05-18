@@ -8,6 +8,8 @@ router.use(function(req,res,next){
     next();
 })
 
+
+
 router.get('/nowplaying',asyncHandler (async function(req,res){
     const nowplayings = await Movie.findAll({where:{ Category: 'nowplaying'}});
     const cinemas = await Cinema.findAll();
@@ -27,7 +29,12 @@ router.get('/comingsoon',asyncHandler (async function(req,res){
             res.render('gubcinema/home/phimsapchieu',{comingsoons,cinemas});
             }));
     
-
+            router.get('/:id',asyncHandler(async function(req,res){
+                const movie = await Movie.findByPk(req.params.id);
+                const cinemas = await Cinema.findAll();
+                const hots = await Movie.findAll({where:{ Category: 'hot'}});
+                res.render('gubcinema/home/moviedetail',{movie,cinemas,hots});
+            }));
 
 
     

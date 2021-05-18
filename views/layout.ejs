@@ -51,8 +51,14 @@
     <body id="home-page">
        
         <!-- Khi chưa đăng nhập, trực tiếp vào đây -->
-    
-    
+         <!--LOAD-PAGE-->
+    <div class="all-pics"></div>
+    <div class="all-album"></div>
+    <div class="allvideo"></div>
+    <div class="overlay-album"></div>
+    <div class="overlay-video"></div>
+    <div class="overlay-dark"></div>
+    <!--LOAD-PAGE-->
         <div class="nav-click"></div>
     
         <!--HEAD-->
@@ -102,13 +108,23 @@
                                 </a>
                             </li>
                             <li>
-                                <a data-title=" LỊCH CHIẾU GUBCINEMA" data-description="LỊCH CHIẾU PHIM TẠI GUBCINEMA" data-keyword="GUBCINEMA; LỊCH CHIẾU" href="lichchieu">
+                                <a data-title=" LỊCH CHIẾU GUBCINEMA" data-description="LỊCH CHIẾU PHIM TẠI GUBCINEMA" data-keyword="GUBCINEMA; LỊCH CHIẾU" href="/GUB/lichchieu">
                                     <h1>Lịch chiếu</h1>
                                 </a>
                             </li>
                             <li>
-                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="rapvagia">
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/rapvagia">
                                     <h1>Rạp và giá</h1>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/khuyenmai">
+                                    <h1>Khuyen mai</h1>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/gioithieu">
+                                    <h1>Gioi thieu</h1>
                                 </a>
                             </li>
                            
@@ -357,7 +373,7 @@
                                     <h2>Hệ thống rạp</h2>
                                     <ul>
                                         <% cinemas.forEach(function(cinema) { %>
-                                        <li class='current' data-name="8f3a5832-8340-4a43-89bc-6653817162f1"><a href="rapvagia/8f3a5832-8340-4a43-89bc-6653817162f1"><%- cinema.Name %></a>
+                                        <li class='current' data-name="8f3a5832-8340-4a43-89bc-6653817162f1"><a href="/rapvagia/<%- cinema.id %>"><%- cinema.Name %></a>
                                         </li>
                                         <% }) %>
                                     </ul>
@@ -366,9 +382,9 @@
     
                                     <h2>GUBCinema</h2>
                                     <ul>
-                                        <li data-name="212_2"><a href="phimdangchieu">Phim đang chiếu</a></li>
-                                        <li data-name="212_1"><a href="phimsapchieu">Phim sắp chiếu</a></li>
-                                        <li data-name="212_3"><a href="lichchieu">Lịch chiếu</a></li>
+                                        <li data-name="212_2"><a href="/GUB/movies/nowplaying">Phim đang chiếu</a></li>
+                                        <li data-name="212_1"><a href="/GUB/movies/commingsoon">Phim sắp chiếu</a></li>
+                                        <li data-name="212_3"><a href="/GUB/lichchieu">Lịch chiếu</a></li>
                                   
                                     </ul>
                                 </div>
@@ -392,7 +408,7 @@
                 <!--//copyright-part//-->
                 <div class="copyright">
                     <p>
-                        <a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=51406" target="_blank"><img width="150px" src="/catalog/view/theme/default/images/dathongbao.png" alt=" đã được duyệt"></a>
+                        <a href="/GUB/home" target="_blank"><img width="150px" src="/catalog/view/theme/default/images/dathongbao.png" alt=" đã được duyệt"></a>
                     </p>
                     <p>CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM – RẠP CHIẾU PHIM NGÔI SAO<br> Địa chỉ: 135 Hai Bà Trưng, phường Bến Nghé, Quận 1, TP.HCM<br> Giấy CNĐKDN số: 0312742744, đăng ký lần đầu ngày 18/04/2014, đăng ký thay đổi lần thứ 2 ngày 15/09/2014,
                         cấp bởi Sở KH&ĐT TP.HCM<br><br> 2015 © <strong>GUBCinema</strong>. All rights reserved.</p>
