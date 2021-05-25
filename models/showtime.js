@@ -20,7 +20,8 @@ const ShowTime = db.define('ShowTime', {
   });
 
 ShowTime.belongsTo(Movie);
+Movie.hasMany(ShowTime);
 ShowTime.belongsTo(Theater);
-
+Theater.hasMany(ShowTime);
 module.exports = ShowTime;
 
