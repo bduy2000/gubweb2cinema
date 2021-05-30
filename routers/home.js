@@ -1,8 +1,11 @@
 const User = require('../models/user');
 const Movie = require('../models/movie');
 const Cinema = require('../models/cinema');
+const Theater = require('../models/theater');
+const ShowTimes = require('../models/showtime');
 const asyncHandler = require('express-async-handler');
 const express = require('express');
+
 const router = express.Router();
 
 
@@ -69,4 +72,29 @@ router.get('/gioithieu',asyncHandler (async function(req,res){
     const nowplayings = await Movie.findAll({where:{ Category: 'nowplaying'}});
 res.render('gubcinema/home/gioithieu',{nowplayings,cinemas});
 }));
+
+router.get('/lichchieuchitiet/:id/:date',asyncHandler (async function(req,res){
+    const {id,date} = req.params;
+    const movies = await Movie.findAll({include:[{model:ShowTimes,where:{DateShow: date},include:[{model:Theater,where:{CinemaId: id}}]}]});
+   const cinemas = await Cinema.findAll();
+    res.render('gubcinema/home/lichchieuchitiet',{cinemas,movies,id,date});
+    
+}));
+
+router.get('/datve/:movieid/:cinemaid/:date',asyncHandler (async function(req,res){
+    const {movieid,cinemaid,date} = req.params;
+    const movie = await Movie.findOne({where:{id: movieid},include:[{model:ShowTimes,where:{DateShow: date},include:[{model:Theater,where:{CinemaId: cinemaid}}]}]});
+   const cinemas = await Cinema.findAll();
+   const thiscinema = await Cinema.findByPk(cinemaid);
+    res.render('gubcinema/home/lichchieuchitietphim',{cinemas,movie,movieid,cinemaid,date,thiscinema});
+    
+}));
+
+
+
+router.get('/lichchieu',asyncHandler (async function(req,res){
+    const cinemas = await Cinema.findAll();
+    res.render('gubcinema/home/lichchieu',{cinemas});
+}));
+
 module.exports = router;// do router cung la 1 cai module nen can export no ra
