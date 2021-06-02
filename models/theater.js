@@ -21,6 +21,6 @@ const Theater = db.define('Theater', {
 
   // 1 todo chi co 1 user con 1 user co nhiu todo
 Theater.belongsTo(Cinema);
-Cinema.hasMany(Theater);
+Cinema.hasMany(Theater,{onDelete: 'cascade', hooks:true});
 
 module.exports = Theater;

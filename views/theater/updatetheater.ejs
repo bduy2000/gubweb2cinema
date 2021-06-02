@@ -44,14 +44,14 @@
 
 				<div class="mb-3"><label for="height" class="form-label">Height(A to Z)</label>
 					<select class="form-select" aria-label="Default select example" id="height" name="height">
-						<% for(var i = 69 ; i <= 90 ; i++) { %>
+						<% for(var i = 69 ; i <= 80 ; i++) { %>
                             <option value="<%- String.fromCharCode(i) %>"  <%- theater.Height === String.fromCharCode(i) ? 'selected' : '' %>><%- String.fromCharCode(i) %></option>
 						<%}%>
 					  </select></div>
 					
-					  <div class="mb-3"><label for="height" class="form-label">Width(20 to 100)</label>
+					  <div class="mb-3"><label for="height" class="form-label">Width(8 to 16)</label>
 					<select class="form-select" aria-label="Default select example" name="width">
-						<% for(var j = 20 ; j <= 100 ; j++) { %>
+						<% for(var j = 10 ; j <= 16 ; j++) { %>
                             <option value="<%- j %>"<%- theater.Width === j ? 'selected' : '' %>><%- j %></option>
 						<%}%>
 					</select></div>

@@ -5,12 +5,12 @@ const movieauthRouter = require('./routers/movieauth');
 const userRouter = require('./routers/user');
 const authRouter = require('./routers/auth');
 const homeRouter = require('./routers/home');
+const GetTicketRouter = require('./routers/getticket');
 const MovieRouter = require('./routers/movie');
 const CinemaRouter = require('./routers/cinema');
 const TheaterRouter = require('./routers/theater');
 const ShowTimeRouter = require('./routers/showtime');
-const BookingRouter = require('./routers/booking');
-const TicketRouter = require('./routers/ticket');
+const StatisticRouter = require('./routers/statistic');
 const userMiddleware = require('./middlewares/user');
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./models/db');
@@ -34,13 +34,12 @@ app.use('/GUB/movies',movieauthRouter);
 app.use('/GUB/user',userRouter); // tat ca duong dan /TODO/.. thi chay dc
 app.use('/GUB/profile',authRouter);
 app.use('/GUB',homeRouter);
+app.use(GetTicketRouter);
 app.use(CinemaRouter);
 app.use(TheaterRouter);
 app.use(MovieRouter);
 app.use(ShowTimeRouter);
-app.use(BookingRouter);
-app.use(TicketRouter);
-
+app.use(StatisticRouter);
 //Template
 app.set('view engine','ejs');//Dung ejs
 

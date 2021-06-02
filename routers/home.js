@@ -58,22 +58,26 @@ router.get('/send',asyncHandler (async function(req,res){
 }));
 
 router.get('/khuyenmai',asyncHandler (async function(req,res){
+    res.locals.title = 'Khuyen mai';
     const cinemas = await Cinema.findAll();
     const nowplayings = await Movie.findAll({where:{ Category: 'nowplaying'}});
     res.render('gubcinema/home/khuyenmai',{nowplayings,cinemas});
     }));
     router.get('/rapvagia',asyncHandler (async function(req,res){
+        res.locals.title = 'Rapvagia';
         const cinemas = await Cinema.findAll();
     res.render('gubcinema/home/rapvagia',{cinemas});
     }));
 
 router.get('/gioithieu',asyncHandler (async function(req,res){
+    res.locals.title = 'GioiThieu';
     const cinemas = await Cinema.findAll();
     const nowplayings = await Movie.findAll({where:{ Category: 'nowplaying'}});
 res.render('gubcinema/home/gioithieu',{nowplayings,cinemas});
 }));
 
 router.get('/lichchieuchitiet/:id/:date',asyncHandler (async function(req,res){
+    res.locals.title = 'Lich chieu';
     const {id,date} = req.params;
     const movies = await Movie.findAll({include:[{model:ShowTimes,where:{DateShow: date},include:[{model:Theater,where:{CinemaId: id}}]}]});
    const cinemas = await Cinema.findAll();
@@ -82,6 +86,7 @@ router.get('/lichchieuchitiet/:id/:date',asyncHandler (async function(req,res){
 }));
 
 router.get('/datve/:movieid/:cinemaid/:date',asyncHandler (async function(req,res){
+    res.locals.title = 'Lich chieu';
     const {movieid,cinemaid,date} = req.params;
     const movie = await Movie.findOne({where:{id: movieid},include:[{model:ShowTimes,where:{DateShow: date},include:[{model:Theater,where:{CinemaId: cinemaid}}]}]});
    const cinemas = await Cinema.findAll();
@@ -93,6 +98,7 @@ router.get('/datve/:movieid/:cinemaid/:date',asyncHandler (async function(req,re
 
 
 router.get('/lichchieu',asyncHandler (async function(req,res){
+    res.locals.title = 'Lich chieu';
     const cinemas = await Cinema.findAll();
     res.render('gubcinema/home/lichchieu',{cinemas});
 }));

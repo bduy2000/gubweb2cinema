@@ -2,8 +2,15 @@ const asyncHandler = require('express-async-handler');
 const express = require('express');
 const router = express.Router();
 const brcypt = require('bcrypt');
+const Movie = require('../models/movie');
+const Theater = require('../models/theater');
+const Cinema = require('../models/cinema');
+const ShowTime = require('../models/showtime');
+const Booking = require('../models/booking');
+const Ticket = require('../models/ticket');
 const User = require('../models/user');
 const ensureloggin = require('../middlewares/ensure_login');
+const user = require('../middlewares/user');
 router.use(ensureloggin);
 router.use(function(req,res,next){
     const user = req.user;
@@ -36,6 +43,14 @@ router.post('/',asyncHandler(async function(req, res) {
     }
     await user.save();
     res.redirect('/GUB/home');
+}));
+
+
+router.get('/history',asyncHandler(async function(req, res) {
+    const user = req.user;
+    const historys = await User.findOne({ include: { all: true, nested: true },where:{id: user.id}});
+    const cinemas = await Cinema.findAll();
+    res.render('gubcinema/home/donhangcuatoi',{historys,cinemas})
 }));
 
 //logout

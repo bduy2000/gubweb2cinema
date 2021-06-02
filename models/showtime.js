@@ -20,8 +20,8 @@ const ShowTime = db.define('ShowTime', {
   });
 
 ShowTime.belongsTo(Movie);
-Movie.hasMany(ShowTime);
+Movie.hasMany(ShowTime,{onDelete: 'cascade', hooks:true});
 ShowTime.belongsTo(Theater);
-Theater.hasMany(ShowTime);
+Theater.hasMany(ShowTime,{onDelete: 'cascade', hooks:true});
 module.exports = ShowTime;
 

@@ -9,10 +9,7 @@ router.use(function(req,res,next){
     res.locals.title = 'Log in';
     next();
 })
-//login
-router.get('/login',function(req,res){
-res.render('user/login');
-});
+
 
 
 router.post('/login',asyncHandler (async function(req,res){
@@ -26,9 +23,9 @@ router.post('/login',asyncHandler (async function(req,res){
                 res.redirect('/GUB/home');
             }
            
-            }else{
-                res.render('user/login');
-            }
+        }else{
+            res.redirect('/GUB/home');
+        }
 }));
 
 

@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/cinema/css/util.css">
-<link rel="stylesheet" type="text/css" href="/cinema/css/main.css">
-<body>
+
+<button style="height: 50px; width: 50px;" type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/GUB/admin'"></button>
+
     <div class="container-contact100">
 		<div class="wrap-contact100">
                  <center>
@@ -30,7 +30,6 @@
 										<th>Address</th>
 										<th>Update</th>
 										<th>Delete</th>
-										
 									</tr>
 									</thead>
 									<tfoot>
@@ -40,30 +39,23 @@
 										<th>Address</th>
 										<th>Update</th>
 										<th>Delete</th>
-										
 									</tr>
-				
 									</tfoot>
 									<tbody>
 										<% cinemas.forEach(function(cinema) { %>
 									<tr>
-										
 										<td><%- cinema.id %></td>
 										<td><%- cinema.Name %></td>
 										<td><%- cinema.Address %></td>
 										<td>
-											<form method="GET" action="/cinema/update/<%- cinema.id %>">
-												<button type="submit" class="btn btn-primary btn-circle btn-sm"><i
-															class="fas fa-trash"></i>
-												</button>
-											</form>
+										<button onclick="window.location.href='/cinema/update/<%- cinema.id %>'" class="btn btn-primary btn-circle btn-sm">
+										<i class="fas fa-trash"></i>
+										</button>
 										</td>
 										<td>
-											<form method="GET" action="/cinema/delete/<%- cinema.id %>">
-												<button type="submit" class="btn btn-danger btn-circle btn-sm"><i
-															class="fas fa-trash"></i>
-												</button>
-											</form>
+										<button onclick="window.location.href='/cinema/delete/<%- cinema.id %>'" class="btn btn-danger btn-circle btn-sm">
+											<i class="fas fa-trash"></i>
+										</button>
 										</td>
 										
 
@@ -84,4 +76,4 @@
 
     
     
-</body>
+

@@ -57,18 +57,18 @@
 										<td><%- movie.Category %></td>
 										
 										<td>
-											<form method="GET" action="/movie/update/<%- movie.id %>">
-												<button type="submit" class="btn btn-primary btn-circle btn-sm"><i
+											
+												<button  onclick="window.location.href='/movie/update/<%- movie.id %>'" class="btn btn-primary btn-circle btn-sm"><i
 															class="fas fa-trash"></i>
 												</button>
-											</form>
+											
 										</td>
 										<td>
-											<form method="GET" action="/movie/delete/<%- movie.id %>">
-												<button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+											
+												<button onclick="window.location.href='/movie/delete/<%- movie.id %>'" type="submit" class="btn btn-danger btn-circle btn-sm"><i
 															class="fas fa-trash"></i>
 												</button>
-											</form>
+											
 										</td>
 										
 

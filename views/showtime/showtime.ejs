@@ -28,7 +28,8 @@
 										<th>Time Begin</th>
 										<th>Time Finish</th>
 										<th>Date Show</th>
-								
+										<th>Price</th>
+										<th>Update</th>
 										<th>Delete</th>
 									</tr>
 									</thead>
@@ -39,7 +40,8 @@
 										<th>Time Begin</th>
 										<th>Time Finish</th>
 										<th>Date Show</th>
-								
+										<th>Price</th>
+										<th>Update</th>
 										<th>Delete</th>
 										
 									</tr>
@@ -50,16 +52,22 @@
 										<%	if(showtime.MovieId && showtime.TheaterId){ %>
 									<tr>
 										<td><%- showtime.Movie.Name %></td>
+										<td><%- showtime.Theater.Name %></td>
               							<td><%- showtime.TimeBegin %></td>
               							<td><%- showtime.TimeFinish %></td>
-              							<td><%- showtime.Theater.Name %></td>
+              							<td><%- showtime.DateShow %></td>
               							<td><%- showtime.Price %></td>
+										  <td>
+											<button onclick="window.location.href='/showtime/update/<%-showtime.id-%> '" class="btn btn-primary btn-circle btn-sm"><i
+												class="fas fa-trash"></i>
+									</button>
+										  </td>
 										<td>
-											<form method="GET" action="/showtime/delete/<%- showtime.id %>">
-												<button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+											
+												<button onclick="window.location.href='/showtime/delete/<%-showtime.id-%> '" class="btn btn-danger btn-circle btn-sm"><i
 															class="fas fa-trash"></i>
 												</button>
-											</form>
+											
 										</td>
 										
 

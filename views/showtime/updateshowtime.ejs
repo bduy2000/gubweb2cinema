@@ -87,13 +87,13 @@
 				</span>
                 </center>
 
-			<form action="/showtime/add"  class="contact100-form validate-form" method="POST" > 
+			<form action="/showtime/update/<%- showtime.id %>"  class="contact100-form validate-form" method="POST" > 
                 <label for="movie" class="form-label">Movie</label>
 				<div style="height: 30px;width: 300px" class="dropdown dropdown">
                     
                     <select id="movie" name="MovieId" class="dropdown-select">
                       <% movies.forEach(function(movie) { %>
-                        <option value="<%- movie.id %>"><%- movie.Name %></option>
+                        <option value="<%- movie.id %>" <%- movie.id === showtime.MovieId ? 'selected' : '' %>><%- movie.Name %></option>
                         <%})%>
                     </select>
              	</div>
@@ -103,25 +103,27 @@
                    
                     <select id="theater" name="TheaterId" class="dropdown-select">
                       <% theaters.forEach(function(theater) { %>
-                        <option value="<%- theater.id %>"><%- theater.Name %>,<%- theater.Cinema.Name%></option>
+                        <option value="<%- theater.id %>" <%- theater.id === showtime.TheaterId ? 'selected' : '' %>><%- theater.Name %>,<%- theater.Cinema.Name%></option>
                         <%})%>
                     </select>
              	</div>
 				 <br /> <br />
 				 <br />
+                 <p>Time Begin: <%- showtime.TimeBegin %></p>
 				 <div class="wrap-input100 ">
 					<span class="label-input100">Time Begin</span>
 					<input type="time" name="timebegin">
 				 </div>
 
-				 
+                 <p>Date Show: <%- showtime.DateShow %></p>
                  <div class="wrap-input100 ">
                     <label for="input_starttime">Date Show</label>
                     <input  type="date" id="input_starttime" name="dateshow" >
                  </div>
+                
                  <label for="price">Price</label>
                  <div class="wrap-input100 ">
-                    <input  type="number" id="price" name="price" >
+                    <input  type="number" id="price" name="price" placeholder="<%- showtime.Price %>">
                  </div>
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">

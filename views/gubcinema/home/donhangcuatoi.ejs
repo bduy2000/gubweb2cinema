@@ -3,33 +3,18 @@
         <div class="user-info">
             <h2>Thông tin tài khoản</h2>
             <ul>
-                <li>
-                    <div class="col-title">Giới tính:</div>
-                    <div class="col-value"></div>
-                </li>
+               
                 <li>
                     <div class="col-title">Họ tên:</div>
-                    <div class="col-value"></div>
-                </li>
-                <li>
-                    <div class="col-title">Ngày sinh:</div>
-                    <div class="col-value"></div>
-                </li>
-                <li>
-                    <div class="col-title">Địa chỉ:</div>
-                    <div class="col-value"></div>
+                    <div class="col-value"><%- currentUser.Name %></div>
                 </li>
                 <li>
                     <div class="col-title">Điện thoại:</div>
-                    <div class="col-value"></div>
-                </li>
-                <li>
-                    <div class="col-title">Tên đăng nhập:</div>
-                    <div class="col-value"></div>
+                    <div class="col-value"><%- currentUser.Tel %></div>
                 </li>
                 <li>
                     <div class="col-title">Email:</div>
-                    <div class="col-value"></div>
+                    <div class="col-value"><%- currentUser.Email %></div>
                 </li>
             </ul>
         </div>
@@ -40,31 +25,31 @@
 
                 <tbody>
                     <tr>
-                        <td>Ngày</td>
-                        <td>cashiers</td>
-                        <td>type</td>
-                        <td>points</td>
-                        <td>reason</td>
+                        <td>Date Show</td>
+                      
+                        <td>Cinema</td>
+                        <td>Movie</td>
+                        <td>Room</td>
+                        <td>Seat</td>
+                        <td>Time Begin</td>
+                        <td>Price</td>
                     </tr>
-                    <!-- <tr>
-                        <td>25/04/2015</td>
-                        <td>Cinema Quốc Thanh</td>
-                        <td>Cô Gái Lọ Lem</td>
-                        <td>2</td>
-                        <td>19:30</td>
-                    </tr> -->
+                    <% historys.Bookings.forEach(function(history) { %>
+                        <% history.Tickets.forEach(function(ticket) { %>
+                    <tr>
+                        <td><%- history.ShowTime.DateShow %></td>
+                        <td><%- history.ShowTime.Theater.Cinema.Name %></td>
+                        <td><%- history.ShowTime.Movie.Name %></td>
+                        <td><%- history.ShowTime.Theater.Name %></td>
+                        <td><%- ticket.RegalSeat %></td>
+                        <td><%- history.ShowTime.TimeBegin %></td>
+                        <td><%- history.ShowTime.Price %></td>
+                    </tr>
+                    <% })%>
+                    <% })%>
                 </tbody>
             </table>
-            <ul>
-                <li>
-                    <div class="col-title">Điểm tích lũy:</div>
-                    <div class="col-value">0</div>
-                </li>
-                <li>
-                    <div class="col-title">Loại thẻ:</div>
-                    <div class="col-value"></div>
-                </li>
-            </ul>
+            
         </div>
     </div>
 </div>

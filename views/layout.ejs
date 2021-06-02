@@ -13,6 +13,7 @@
     </body>
   </html>
 <% }else{ %>
+    <% if(title != 'Datve' ){ %> 
     <!DOCTYPE HTML>
     <html lang="vi">
     
@@ -260,13 +261,20 @@
                                     <div class="user-form login">
                                         <div class="icon-arrow"></div>
                                     
-                                        <form id="login-top" method="GET" action="/GUB/profile/logout">
+                                       
                                             <div class="require-col">
                                                 <div class="input-but">
-                                                    <button type="submit" class="btn btn-warning" >Log out</button>
+                                                   <button type="submit" onclick="window.location.href='/GUB/profile/history'" class="btn btn-warning" >History</button> 
+                                                    <button type="submit" onclick="window.location.href='/GUB/profile/logout'" class="btn btn-warning" >Log out</button>
+                                                    
                                                 </div>
+                                                
+                                                       
+                                                   
+                                                    
+                                                
                                             </div>
-                                        </form>
+                                        
                                     </div>
                                 
                                 <% }else{ %>
@@ -383,7 +391,7 @@
                                     <h2>GUBCinema</h2>
                                     <ul>
                                         <li data-name="212_2"><a href="/GUB/movies/nowplaying">Phim đang chiếu</a></li>
-                                        <li data-name="212_1"><a href="/GUB/movies/commingsoon">Phim sắp chiếu</a></li>
+                                        <li data-name="212_1"><a href="/GUB/movies/comingsoon">Phim sắp chiếu</a></li>
                                         <li data-name="212_3"><a href="/GUB/lichchieu">Lịch chiếu</a></li>
                                   
                                     </ul>
@@ -436,5 +444,8 @@
     </body>
     
     </html>
+    <% }else{ %>
+        <%- body%>
+       <%}%> 
 <% } %>
 

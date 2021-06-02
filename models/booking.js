@@ -4,19 +4,19 @@ const User = require('./user');
 const ShowTime = require('./showtime');
 
 const Booking = db.define('Booking', { 
-    id:{
-        type: DataTypes.INTEGER,
-        primaryKey:true,
-    },
+  
         DateTime:{
         type: DataTypes.DATE,
         },
       TotalPrice: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       }, 
   });
 
-User.belongsToMany(ShowTime, { through: Booking });
-ShowTime.belongsToMany(User, { through: Booking });
+  Booking.belongsTo(ShowTime);
+  ShowTime.hasMany(Booking,{onDelete: 'cascade', hooks:true});
+  Booking.belongsTo(User);
+  User.hasMany(Booking,{});
+  
 
 module.exports = Booking;

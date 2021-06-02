@@ -38,7 +38,7 @@
                                 <div class="schedule-block">
                                     <div class="schedule-block-load" style="opacity: 1;">
                                         <% movie.ShowTimes.forEach(function(item) { %>
-                                        <button class="schedule-btn"><%- item.TimeBegin %></button>
+                                        <button class="schedule-btn" onclick="window.location.href='/getticket/<%- item.id %>'" ><%- item.TimeBegin %></button>
                                         <% })%>
                                     </div>
                                 </div>
