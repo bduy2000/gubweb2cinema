@@ -2,126 +2,42 @@
 <html lang="en">
 
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Revenue statistics by theater cluster</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>Revenue Statistics By Movie</title>
 
-    <script>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        const movies = "<%= JSON.stringify(parserData) %>";
-        window.onload = function () {
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
-            console.log(movies);
+	
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-
-            //     const chart = new CanvasJS.Chart("chartContainer", {
-            //         exportEnabled: true,
-            //         animationEnabled: true,
-            //         title: {
-            //             text: "Revenue statistics by movie"
-            //         },
-
-
-            //         axisY: {
-            //             title: "Number of tickets sold",
-            //             titleFontColor: "#4F81BC",
-            //             lineColor: "#4F81BC",
-            //             labelFontColor: "#4F81BC",
-            //             tickColor: "#4F81BC"
-            //         },
-            //         axisY2: {
-            //             title: "Revenue",
-            //             titleFontColor: "#C0504E",
-            //             lineColor: "#C0504E",
-            //             labelFontColor: "#C0504E",
-            //             tickColor: "#C0504E"
-            //         },
-            //         toolTip: {
-            //             shared: true
-            //         },
-            //         legend: {
-            //             cursor: "pointer",
-            //             itemclick: toggleDataSeries
-            //         },
-            //         data: [{
-            //             type: "column", 
-            //             name: "Number of tickets sold",
-            //             showInLegend: true,
-
-            //             dataPoints: [
-
-            //                 { label: "LẬT MẶT 48H ", y: 20050 },
-            //                 { label: "BỐ GIÀ", y: 31100 },
-            //                 { label: "GODZILLA VS KONG", y: 28550 },
-            //                 { label: "BÀN TAY DIỆT QUỶ", y: 20800 },
-            //                 { label: "NGƯỜI NHÂN BẢN", y: 17507 },
-            //                 { label: "ONG NHÍ PHIÊU LƯU KÝ 2D: GIẢI CỨU CÔNG CHÚA KIẾN", y: 11800 },
-            //                 { label: "CON LẮC TÀ THUẬT", y: 7800 },
-            //                 { label: "DETECTIVE CONAN: VIÊN ĐẠN ĐỎ", y: 8600 },
-            //                 { label: "TRÙM CUỐI SIÊU ĐẲNG", y: 8370 },
-            //                 { label: "KẺ VÔ DANH", y: 12800 }
-            //             ]
-            //         }]
-            //     });
-            //     chart.render();
-
-            //     function toggleDataSeries(e) {
-            //         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-            //             e.dataSeries.visible = false;
-            //         } else {
-            //             e.dataSeries.visible = true;
-            //         }
-            //         e.chart.render();
-            //     }
-
-        }
-    </script>
+		gtag('config', 'UA-119386393-1');
+	</script>
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="row" style="margin-left: 540px; margin-top: 30px;">
-            <div class="col-auto">
-                <h4>From</h4>
-            </div>
-            <div class="col-auto">
-
-                <input id="datepicker" width="150" />
-            </div>
-            <div class="col-auto">
-                <h4>To</h4>
-
-            </div>
-            <div class="col-auto">
-
-                <input id="datepicker2" onchange="getStatic()" width="150" />
-            </div>
-        </div>
-        <form id="getstatic" method="POST">
+    <div class="container">  
+        <!-- <form id="getstatic" method="POST">
             <input id="from" name="from" type="hidden" />
             <input id="to" name="to" type="hidden" />
         </form>
 
-        <script>
-            $('#datepicker').datepicker({
-                uiLibrary: 'bootstrap'
-            });
-        </script>
-        <script>
-            $('#datepicker2').datepicker({
-                uiLibrary: 'bootstrap'
-            });
-        </script>
+        
         <script>
             function getStatic() {
                 if ($('#datepicker').val() == '') {
@@ -134,15 +50,262 @@
                     $('#getstatic').submit();
                 }
             }
-        </script>
-        <br>
-        <div id="chartContainer" style="height: 400px; max-width: 1000px; margin: 0px auto;"></div>
+        </script> -->
+        <!-- Simple Datatable start -->
+		<div class="card-box mb-30">
+			<div class="row" style="margin-left: 540px; padding-top: 30px;">
+				<div class="col-auto">
+					<h4>From</h4>
+				</div>
+				<div class="col-auto">
+					<input type="date">		
+				</div>
+				<div class="col-auto">
+					<h4>To</h4>
+				</div>
+				<div class="col-auto">
+					<input type="date">
+				</div>
+			</div>
+			<div class="pd-20">
+				<h2 class="text-blue h2">Revenue Statistics By Movie</h2>
+			</div>
+			
+			<div class="pb-20">
+				<table class="data-table table stripe hover nowrap">
+					<thead>
+						<tr>
+							<th class="table-plus ">Movie's name</th>
+							<th>Revenue (VNĐ)</th>
+							<th>Number of tickets sold</th>
+							<th class="datatable-nosort">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="table-plus">LẬT MẶT 48H</td>
+							<td>250000</td>
+							<td>6000</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">BỐ GIÀ</td>
+							<td>2504630</td>
+							<td>7503</td>
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+									
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">GODZILLA VS KONG</td>
+							<td>5820147</td>
+							<td>7423</td>
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">BÀN TAY DIỆT QUỶ</td>
+							<td>4752013</td>
+							<td>5867</td>
+						
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">NGƯỜI NHÂN BẢN</td>
+							<td>2586314</td>
+							<td>4572</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">ONG NHÍ PHIÊU LƯU KÝ 2D: GIẢI CỨU CÔNG CHÚA KIẾN</td>
+							<td>3645215</td>
+							<td>45236</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">CON LẮC TÀ THUẬT</td>
+							<td>8574264</td>
+							<td>9528</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">DETECTIVE CONAN: VIÊN ĐẠN ĐỎ</td>
+							<td>5869435</td>
+							<td>6854</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">TRÙM CUỐI SIÊU ĐẲNG</td>
+							<td>5748241</td>
+							<td>5632</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">KẺ VÔ DANH</td>
+							<td>5633214</td>
+							<td>5741</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-plus">ĐIỆP VIÊN SIÊU LẦY</td>
+							<td>2458699</td>
+							<td>5241</td>
+							
+							<td>
+								<div class="dropdown">
+									<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#"
+										role="button" data-toggle="dropdown">
+										<i class="dw dw-more"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+										<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+										<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- Simple Datatable End -->
+	</div>
 
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script>
     </div>
-    <br>
-
 </body>
 
 </html>
