@@ -1,0 +1,196 @@
+
+  
+<!DOCTYPE html>
+<head>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta charset="UTF-8" >
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Noto Sans', sans-serif; letter-spacing: 0px; font-size: 14px; color: #2e3139; font-weight: 400; line-height: 26px; }
+h1, h2, h3, h4, h5, h6 { letter-spacing: 0px; font-weight: 400; color: #1c1e22; margin: 0px 0px 15px 0px; font-family: 'Noto Sans', sans-serif; }
+h1 { font-size: 42px; line-height: 50px; }
+h2 { font-size: 36px; line-height: 42px; }
+h3 { font-size: 20px; line-height: 32px; }
+h4 { font-size: 18px; line-height: 32px; }
+h5 { font-size: 14px; line-height: 20px; }
+h6 { font-size: 12px; line-height: 18px; }
+p { margin: 0 0 20px; line-height: 1.8; }
+p:last-child { margin: 0px; }
+ul, ol { }
+a { text-decoration: none; color: #2e3139; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
+a:focus, a:hover { text-decoration: none; color: #222222; }
+.content{padding-top:80px; padding-bottom:80px};
+
+
+/*------------------------
+Radio & Checkbox CSS
+-------------------------*/
+.form-control { border-radius: 4px; font-size: 14px; font-weight: 500; width: 100%; height: 70px; padding: 14px 18px; line-height: 1.42857143; border: 1px solid #dfe2e7; background-color: #dfe2e7; text-transform: capitalize; letter-spacing: 0px; margin-bottom: 16px; -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075); box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075); -webkit-appearance: none; }
+
+.box { background-color: #fff; border-radius: 8px; border: 2px solid #e9ebef; padding: 50px; margin-bottom: 40px; }
+.box-title { margin-bottom: 30px; text-transform: uppercase; font-size: 16px; font-weight: 700; color: #222222; letter-spacing: 2px; }
+.plan-selection { border-bottom: 2px solid #e9ebef; padding-bottom: 25px; margin-bottom: 35px; }
+.plan-selection:last-child { border-bottom: 0px; margin-bottom: 0px; padding-bottom: 0px; }
+.plan-data { position: relative; }
+.plan-data label { font-size: 20px; margin-bottom: 15px; font-weight: 400; }
+.plan-text { padding-left: 35px; }
+.plan-price { position: absolute; right: 0px; color: #222222; font-size: 20px; font-weight: 700; letter-spacing: -1px; line-height: 1.5; bottom: 43px; }
+.term-price { bottom: 18px; }
+.secure-price { bottom: 68px; }
+.summary-block { border-bottom: 2px solid #d7d9de; }
+.summary-block:last-child { border-bottom: 0px; }
+.summary-content { padding: 28px 0px; }
+.summary-price { color: #222222; font-size: 20px; font-weight: 400; letter-spacing: -1px; margin-bottom: 0px; display: inline-block; float: right; }
+.summary-small-text { font-weight: 700; font-size: 12px; color: #8f929a; }
+.summary-text { margin-bottom: -10px; }
+.summary-title { font-weight: 700; font-size: 14px; color: #1c1e22; }
+.summary-head { display: inline-block; width: 120px; }
+
+.widget { margin-bottom: 30px; background-color: #e9ebef; padding: 50px; border-radius: 6px; }
+.widget:last-child { border-bottom: 0px; }
+.widget-title { color: #222222; font-size: 16px; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; display: table; line-height: 1; }
+
+.btn { font-family: 'Noto Sans', sans-serif; font-size: 16px; text-transform: capitalize; font-weight: 700; padding: 12px 36px; border-radius: 4px; line-height: 2; letter-spacing: 0px; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; word-wrap: break-word; white-space: normal !important;color:#49AFF2 }
+.btn-default { background-color: #222222; color: #fff; border: 1px solid #222222; }
+.btn-default:hover { background-color: #222222; color: #fff; border: 1px solid #222222; }
+.btn-default.focus, .btn-default:focus { background-color: #222222; color: #fff; border: 1px solid #222222; }
+
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+section .container .containerinfo{
+     position: absolute;
+     top: 40px;
+     width: 350px;
+     height: calc(100% - 80px);
+     background: #0f3959;
+     z-index: 1;
+     padding: 40px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     box-shadow: 0 20px 20px rgba(0,0,0,0.2);
+ }
+section .container .containerinfo h2{
+     color: #fff;
+     font-size: 24px;
+     margin: 20px 0;
+ }
+ section .container .containerinfo li{
+     position: relative;
+     list-style: none;
+     display: flex;
+     margin: 20px 0;
+     cursor: pointer;
+     align-items: flex-start;
+ }
+section .container .containerinfo li span{
+     color: #fff;
+     margin-left: 10px;
+     font-weight: 300;
+     opacity: 0.5;
+     font-size: 20px;
+ }
+
+
+ section .container .containerinfo li:hover span{
+     opacity: 1;
+ }
+
+    </style>
+</head>
+<body>
+
+   
+        
+
+<div class="content">
+<div class="container">
+	 <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
+                    <div class="box">
+                        <h3 class="box-title">Thông Tin Đặt Vé</h3>
+                        <div class="form-group">
+                            <div style="float:left">
+                               <h2 style="color:#CC0066">   <strong>Phim Lật Mặt 4  </strong> </h2> 
+                            </div>
+                            <div style="float:right">
+                                <h3 style="color:#CC0066"> <b> 07:30 -> 09:00</b> </h3>
+                            </div>
+                        </div>
+                            <br />
+                            <br />
+                        <div>
+                            <p style="color:#CC0066">Thứ 6 ngày 19 tháng 5 năm 2021</p>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="float:left">
+                          <span class="text-secondary">Ghế:</span>  
+                            <label style="font-size: 30px">  G4,G5 </label>
+                             </div>
+                             <div style=" float:right">
+                                Phòng: 
+                                <label style="font-size: 30px">  4 </label>
+                            </div>
+                     
+                       
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group">
+                            <div style="float:left" >
+                                Rạp:
+                                <label style="font-size: 30px">  GUB Quốc Thanh</label>
+                             </div>
+                             <div style="float:right" >
+                                Bắp:
+                                <label style="font-size: 30px">  Combo 1</label>
+                             </div>
+                        </div>
+                   <br />
+                    
+                        <center>  <button  style="float:center;color:gray" class="btn ">Thanh Toán </button> </center>
+
+                    </div>
+                
+                    
+         
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                  
+                    <div class="widget">
+                        <div>
+                        <h4 class="widget-title">Tổng Hoá Đơn
+                        <span class="price" style="color:black">
+                          
+
+                          </span>
+                          </h4>
+                          <p><a href="#">Vé Xem Phim</a> <span class="price">90.000</span> </p>
+                          <p><a href="#">Combo Bắp 1</a> <span class="price">80.000</span></p>
+             
+                          <hr>
+                      <b>    <p style="font-size:30px">Total <span class="price" style="font-size:30px"><b></b></span></p> </b>
+                    </div>
+                   
+                </div>
+            </div>
+
+
+</body>
+</html>
