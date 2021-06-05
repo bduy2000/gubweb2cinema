@@ -7,6 +7,7 @@ const randomString = require('random-base64-string');
 const brcypt = require('bcrypt');
 router.use(function(req,res,next){
     res.locals.title = 'Log in';
+    res.locals.link = '/GUB/home';
     next();
 })
 
@@ -24,7 +25,9 @@ router.post('/login',asyncHandler (async function(req,res){
             }
            
         }else{
-            res.redirect('/GUB/home');
+            res.locals.title = 'Error';
+        const error = "You must register";
+        res.render('alerts/alerts',{error});
         }
 }));
 
@@ -33,9 +36,13 @@ router.post('/register',asyncHandler (async function(req,res){
     const {name,email,tel,password,confirmpassword,category} = req.body;
     const finduser = await User.findbyEmail(email);
      if(password != confirmpassword){
-      res.send('Those passwords didn’t match. Try again');
+        res.locals.title = 'Error';
+        const error = "Those password was not correct";
+        res.render('alerts/alerts',{error});
      }else if(finduser){
-         res.send('This account exist');
+        res.locals.title = 'Error';
+        const error = "This account was exist";
+        res.render('alerts/alerts',{error});
      }else{
      const code = randomString(4);
      const hash = brcypt.hashSync(password,10);
@@ -56,11 +63,7 @@ router.post('/register',asyncHandler (async function(req,res){
 
 
 
-//revive
-router.get('/revive', asyncHandler(async function(req, res) {
-    res.locals.title = 'Revive'
-    res.render('user/revive');
-}));
+
 
 
 router.post('/revive',asyncHandler(async function(req, res) {

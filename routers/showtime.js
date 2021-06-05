@@ -11,6 +11,7 @@ const moment = require('moment');
 router.use(ensureadmin);
 router.use(function (req, res, next) {
     res.locals.title = 'Showtime';
+    res.locals.link = '/GUB/admin';
     next();
 })
 //create
@@ -22,23 +23,41 @@ router.get('/showtime', asyncHandler(async function (req, res) {
 router.get('/showtime/add', asyncHandler(async function (req, res) {
     const theaters = await Theater.findAll({include:Cinema});
     const movies = await Movie.findAll();
+    if(req.session.check){
+        res.locals.check = 'true';
+    }else{
+        res.locals.check = null;
+    }
     res.render('showtime/addshowtime', { movies, theaters });
 }));
 
 
 router.post('/showtime/add', asyncHandler(async function (req, res) {
-    const { MovieId, TheaterId, timebegin, price ,dateshow} = req.body;
+    const { MovieId, TheaterId, timebegin, price ,dateshow,check} = req.body;
     
     const movie = await Movie.findByPk(MovieId);
    
         const end =  moment(timebegin,'hh:mm').add(movie.Time, 'minutes').format('hh:mm');
-        console.log(end);
+      if(MovieId && TheaterId){
         const newshowtime = await ShowTime.create({ TimeBegin: timebegin, MovieId: MovieId, TheaterId: TheaterId, TimeFinish: end, Price: price, DateShow: dateshow });
         if (newshowtime) {
+            if(check){
+                req.session.check = 'true';
+                res.redirect('/showtime/add');
+            }else{
+                delete req.session.check ;
             res.redirect('/showtime');
+            }
         } else {
-            res.send('error');
+            res.locals.title = 'Error';
+    const error = "Add showtime is not sucessfully";
+    res.render('alerts/alerts',{error});
         }
+    }else{
+        res.locals.title = 'Error';
+    const error = "Movie or Theater was not found ";
+    res.render('alerts/alerts',{error});
+    }
     
 }));
 
@@ -51,13 +70,15 @@ router.get('/showtime/update/:id', asyncHandler(async function (req, res) {
     const movies = await Movie.findAll();
         res.render('showtime/updateshowtime',{showtime,theaters,movies})
     } else {
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This showtime was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 //delete
 router.post('/showtime/update/:id', asyncHandler(async function (req, res) {
     const id = req.params.id;
-    const showtime = await Theater.findByPk(id);
+    const showtime = await ShowTime.findByPk(id);
     if (showtime) {
         const { MovieId, TheaterId, timebegin, price, dateshow } = req.body;
         const movie = await Movie.findByPk(MovieId);
@@ -74,9 +95,12 @@ router.post('/showtime/update/:id', asyncHandler(async function (req, res) {
         if(dateshow){
             showtime.DateShow = dateshow;
         }
+        await showtime.save();
         res.redirect('/showtime');
     } else {
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This showtime was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 
@@ -88,7 +112,9 @@ router.get('/showtime/delete/:id', asyncHandler(async function (req, res) {
         await showtime.destroy();
         res.redirect('/showtime');
     } else {
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This showtime was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 

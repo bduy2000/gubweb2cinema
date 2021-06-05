@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { Sequelize, DataTypes, Model ,Op} = require('sequelize');
 const db = require('./db');
 
 const Movie = require('./movie');
@@ -19,8 +19,16 @@ const Ticket = db.define('Ticket', {
 Ticket.belongsTo(Booking);
 Booking.hasMany(Ticket,{onDelete: 'cascade', hooks:true});
 
-Ticket.getStatic = async function(from,to){
-  return await Movie.findAll({include:[{model: ShowTime,include:[{model:Booking,include:Ticket,where:{DateTime:{[between]:[from,to]}}}]}]});
+Ticket.checkRegalSeat = async function(seats,showtime){
+  
+  for(let j = 0 ; j < seats.length; j++){
+const check = await Ticket.findOne({include:[{model: Booking,include:[{model: ShowTime,where:{id: showtime}}]}],where:{RegalSeat: seats[j]}})
+if(check){
+  return 1;
+}  
+}
+return 0;
+  
 }
 
 

@@ -1,7 +1,7 @@
 
-    <div class="container">  
-        
-        <!-- Simple Datatable start -->
+	<div class="container">
+		
+		<!-- Simple Datatable start -->
 		<div class="card-box mb-30">
 			<button style="height: 30px; width: 30px; margin-left: 0.2cm; margin-top: 0.2cm;" type="button" onclick="window.location.href='/GUB/admin'"><--</button>
 			<div class="row" style="margin-left: 540px; padding-top: 30px;">
@@ -18,7 +18,7 @@
 					<input type="date" onchange="getStatic()" id="datepicker2">
 				</div>
 			</div>
-			<form id="getstatic" action="/statistic/movies" method="POST">
+			<form id="getstatic" action="/statistic/cinemas" method="POST">
             <input id="from" name="from" type="hidden" />
             <input id="to" name="to" type="hidden" />
         </form>
@@ -36,25 +36,25 @@
             }
         </script>
 			<div class="pd-20">
-				<h2 class="text-blue h2">Revenue Statistics By Movie</h2>
+				<h2 class="text-blue h2">Revenue Statistics By Cinema</h2>
 			</div>
 			
 			<div class="pb-20">
 				<table class="data-table table stripe hover nowrap">
 					<thead>
 						<tr>
-							<th class="table-plus ">Movie's name</th>
+							<th class="table-plus ">Name</th>
 							<th>Revenue (VNĐ)</th>
 							<th>Number of tickets sold</th>
 							
 						</tr>
 					</thead>
 					<tbody>
-						<% movies.forEach(function(movie) { %>
+						<% cinemas.forEach(function(cinema) { %>
 						<tr>
-							<td class="table-plus"><%- movie.Name %></td>
-							<td><%- movie.dataValues.TotalPrice %></td>
-							<td><%- movie.dataValues.count %></td>
+							<td class="table-plus"><%- cinema.Name %></td>
+							<td><%- cinema.dataValues.TotalPrice %></td>
+							<td><%- cinema.dataValues.count %></td>
 						</tr>
 						<%})%>
 					</tbody>
@@ -63,5 +63,3 @@
 		</div>
 		<!-- Simple Datatable End -->
 	</div>
-
-	<!-- js -->

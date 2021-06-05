@@ -60,18 +60,18 @@
 										<td><%- theater.Height %></td>
 
 										<td>
-											<form method="GET" action="/theater/update/<%- theater.id %>">
-												<button type="submit" class="btn btn-primary btn-circle btn-sm"><i
+											
+												<button type="submit" onclick="window.location.href='/theater/update/<%-theater.id-%> '" class="btn btn-primary btn-circle btn-sm"><i
 															class="fas fa-trash"></i>
 												</button>
-											</form>
+										
 										</td>
 										<td>
-											<form method="GET" action="/theater/delete/<%- theater.id %>">
-												<button type="submit" class="btn btn-danger btn-circle btn-sm"><i
+											
+												<button onclick="window.location.href='/theater/delete/<%-theater.id-%> '" type="submit" class="btn btn-danger btn-circle btn-sm"><i
 															class="fas fa-trash"></i>
 												</button>
-											</form>
+										
 										</td>
 										<% }%>
 

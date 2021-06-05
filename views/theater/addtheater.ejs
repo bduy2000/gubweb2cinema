@@ -17,7 +17,9 @@
 			</style>
 
 	<div class="container-contact100">
+		
 		<div class="wrap-contact100">
+			<button style="height: 30px; width: 30px; margin-left: 0.2cm; margin-top: 0.2cm;" type="button" onclick="window.location.href='/theater'">X</button>
                  <center>
 				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
 					 Add Theater
@@ -38,7 +40,7 @@
 				 
 				 <div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Name</span>
-					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên rạp phim">
+					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên rạp phim" required>
 				</div>
 
 				<div class="mb-3"><label for="height" class="form-label">Height(A to Z)</label>
@@ -55,7 +57,7 @@
 						<%}%>
 					</select></div>
 
-						  <div class="mb-3">
+						<div class="mb-3">
 							<label for="category" class="form-label">category</label>
 						  <select class="form-select" aria-label="Default select example" id="category" name="category">
 							  <option value="2D">2D</option>
@@ -63,7 +65,13 @@
 							  <option value="4DX">4DX</option>
 							</select>     
 							</div>
-
+						</br>
+						<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+								<input class="form-check-input" type="checkbox" value="true" name="check" id="flexCheckDefault" <%- check === 'true' ? 'checked' : '' %>>
+								<label class="form-check-label" for="flexCheckDefault">
+								  Check to continue add theater
+								</label>
+						</div>
 	
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">

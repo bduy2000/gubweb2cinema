@@ -36,6 +36,12 @@ router.get('/home',asyncHandler (async function(req,res){
     }
 }));
 
+router.post('/search',asyncHandler(async function(req,res){
+    const {name} = req.body;
+    const cinemas = await Cinema.findAll();
+ const movies =  await Movie.findbyName(name);
+ res.render('gubcinema/home/timkiem',{movies,cinemas});
+}));
 
 router.get('/admin',function(req,res){
     res.locals.title = 'Admin';

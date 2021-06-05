@@ -10,6 +10,7 @@ const ensureadmin = require('../middlewares/ensure_admin');
 router.use(ensureadmin);
 router.use(function(req,res,next){
     res.locals.title = 'Movie';
+    res.locals.link = '/GUB/admin';
     next();
 })
 router.get('/movie/picture/:id', asyncHandler( async function(req,res){
@@ -27,18 +28,32 @@ router.get('/movie',asyncHandler (async function(req,res){
     }));
     
     router.get('/movie/add',asyncHandler (async function(req,res){
+        if(req.session.check){
+            res.locals.check = 'true';
+        }else{
+            res.locals.check = null;
+        }
         res.render('movie/addmovie');
         })); 
 
 router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req, res) {
-    const {name,time,releasedate,decription,category} = req.body;
+    const {name,time,releasedate,decription,category,check} = req.body;
     const movie = await Movie.create({Name: name , Time: time, ReleaseDate: releasedate , Decription: decription,Category: category});
     if(movie){
         movie.Poster = req.file.buffer;
         await movie.save();
-        res.redirect('/movie');
+        if(check){
+            req.session.check = 'true';
+            res.redirect('/movie/add');
+        }else{
+            delete req.session.check ;
+         res.redirect('/movie');   
+        }
+        
     }else{
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "Add monie unsucessfully";
+    res.render('alerts/alerts',{error});
     }
 }));
 
@@ -48,8 +63,13 @@ router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req
 router.get('/movie/update/:id',asyncHandler (async function(req,res){
     const id = req.params.id;
     const movie = await Movie.findByPk(id);
-    res.locals.title = movie.Name;
+    if(movie){
     res.render('movie/updatemovie',{movie});
+    }else{
+        res.locals.title = 'Error';
+    const error = "This movie was not found";
+    res.render('alerts/alerts',{error});
+    }
     }));
 
 router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async function(req, res) {
@@ -78,7 +98,9 @@ router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async funct
         await movie.save();
         res.redirect('/movie');
     }else{
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This movie was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 //delete
@@ -89,7 +111,9 @@ router.get('/movie/delete/:id',asyncHandler (async function(req,res){
         await movie.destroy();
         res.redirect('/movie');
     }else{
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This movie was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 

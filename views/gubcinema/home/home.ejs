@@ -39,7 +39,7 @@
                             <span class="detail-link">See more</span>
                         </a>
                       
-                        <a class="cart-btn fontsize13" href="/GUB/datve/<%- nowplaying.id %>/<%- cinemas[0].id %>/2021-05-24 ">Mua vé</a>
+                        <a class="cart-btn fontsize13" href="/GUB/datve/<%- nowplaying.id %>/<%-cinemas[0] ? cinemas[0].id : '#' %>/2021-05-24 ">Mua vé</a>
                     </div>
                 </div>
                 <% }) %>
@@ -67,7 +67,7 @@
                                 <span class="detail-link">See more</span>
                         </a>
                       
-                        <a class="cart-btn fontsize13" href="/GUB/datve/<%- hot.id %>/<%- cinemas[0].id %>/2021-05-24 ">Mua vé</a>
+                        <a class="cart-btn fontsize13" href="/GUB/datve/<%- hot.id %>/<%-cinemas[0] ? cinemas[0].id : '#' %>/2021-05-24 ">Mua vé</a>
                     </div>
                 </div>
                 <% }) %>
@@ -95,7 +95,7 @@
                                 <span class="detail-link">See more</span>
                         </a>
                       
-                        <a class="cart-btn fontsize13" href="/GUB/datve/<%- comingsoon.id %>/<%- cinemas[0].id %>/2021-05-24 ">Mua vé</a>
+                        <a class="cart-btn fontsize13" href="/GUB/datve/<%- comingsoon.id %>/<%-cinemas[0] ? cinemas[0].id : '#' %>/2021-05-24 ">Mua vé</a>
                     </div>
                 </div>
                 <% }) %>

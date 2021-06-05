@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
+const { Sequelize, DataTypes, Model ,Op} = require('sequelize');
 const db = require('./db');
 
 
@@ -23,5 +23,9 @@ const Movie = db.define('Movie', {
         type: DataTypes.STRING,
     },
   });
+
+  Movie.findbyName = async function (name){
+    return Movie.findAll({where:{Name:{[Op.like]: '%'+name+'%',}}});
+  }
 
   module.exports=Movie;

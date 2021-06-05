@@ -15,6 +15,7 @@ router.use(ensureloggin);
 router.use(function(req,res,next){
     const user = req.user;
     res.locals.title = user.Name;
+    res.locals.link = '/GUB/home';
     next();
 });
 
@@ -35,10 +36,14 @@ router.post('/',asyncHandler(async function(req, res) {
                 user.Password = hash;
                 user.save();
             }else{
-                res.send('new password != confirm password');
+                const error = "Your confirm password is not correct";
+                res.locals.title = 'Error';
+                res.render('alerts/alerts',{error});
             }
         }else{
-            res.send('your old password is not conrrect');
+            const error = "Your old password is not correct";
+            res.locals.title = 'Error';
+                res.render('alerts/alerts',{error});
         }
     }
     await user.save();

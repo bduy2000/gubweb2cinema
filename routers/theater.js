@@ -7,6 +7,7 @@ const ensureadmin = require('../middlewares/ensure_admin');
 router.use(ensureadmin);
 router.use(function(req,res,next){
     res.locals.title = 'Theater';
+    res.locals.link = '/GUB/admin';
     next();
 })
 //create
@@ -17,23 +18,40 @@ router.get('/theater',asyncHandler (async function(req,res){
 }));
 
 router.get('/theater/add',asyncHandler (async function(req,res){
+    if(req.session.check){
+        res.locals.check = 'true';
+    }else{
+        res.locals.check = null;
+    }
     const cinemas = await Cinema.findAll();
     res.render('theater/addtheater',{cinemas});
 }));
     
 
 router.post('/theater/add',asyncHandler (async function(req,res){
-    const {name,width,height,category,CinemaId} = req.body;
+    const {name,width,height,category,CinemaId,check} = req.body;
     const cinema = await Cinema.findByPk(CinemaId);
     if(cinema){
         const theater = await cinema.createTheater({Name: name,Width: width , Height: height, Category: category });
         if(theater){
-            res.redirect('/theater');
+            if(check){
+                req.session.check = 'true';
+
+                res.redirect('/theater/add');
+            }else{
+                delete req.session.check ;
+            res.redirect('/theater');    
+            }
+            
         }else{
-            res.send('error');
+            res.locals.title = 'Error';
+    const error = "Add theater unsucessfully";
+    res.render('alerts/alerts',{error});
         }
     }else{
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This cinema was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 
@@ -42,8 +60,13 @@ router.get('/theater/update/:id',asyncHandler (async function(req,res){
     const id = req.params.id;
     const theater = await Theater.findByPk(id);
     const cinemas = await Cinema.findAll();
-    res.locals.title = theater.Name;
+    if(theater){
     res.render('theater/updatetheater',{theater,cinemas});
+    }else{
+        res.locals.title = 'Error';
+    const error = "This theater was not found";
+    res.render('alerts/alerts',{error});
+    }
     }));
 
 router.post('/theater/update/:id',asyncHandler (async function(req,res){
@@ -61,7 +84,9 @@ router.post('/theater/update/:id',asyncHandler (async function(req,res){
         await theater.save();
         res.redirect('/theater');
     }else{
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This theater was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 //delete
@@ -72,7 +97,9 @@ router.get('/theater/delete/:id',asyncHandler (async function(req,res){
         await theater.destroy();
         res.redirect('/theater');
     }else{
-        res.send('error');
+        res.locals.title = 'Error';
+    const error = "This theater was not found";
+    res.render('alerts/alerts',{error});
     }
 }));
 

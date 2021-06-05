@@ -3,6 +3,7 @@
 	<link rel="stylesheet" type="text/css" href="/movie/css/main.css">
     <div class="container-contact100">
 		<div class="wrap-contact100">
+			<button style="height: 30px; width: 30px; margin-left: 0.2cm; margin-top: 0.2cm;" type="button" onclick="window.location.href='/movie'">X</button>
                  <center>
 				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
 					Add Movie
@@ -13,22 +14,22 @@
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Name</span>
-					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên phim">
+					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên phim" required>
 				</div>
 			
 	
 
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Time</span>
-					<input class="input100" type="number" name="time" placeholder="Vui lòng nhập thời lượng"/>
+					<input class="input100" type="number" name="time" placeholder="Vui lòng nhập thời lượng" required/>
 				</div>
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Decription</span>
-					<textarea class="input100" name="decription" placeholder="Vui lòng điền mo ta của phim "></textarea>
+					<textarea class="input100" name="decription" placeholder="Vui lòng điền mo ta của phim " required></textarea>
 				</div>
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Release Date</span>
-					<input class="input100" type="date" name="releasedate" placeholder="Vui lòng nhập ngày công chiếu"/>
+					<input class="input100" type="date" name="releasedate" placeholder="Vui lòng nhập ngày công chiếu" required/>
 				</div>
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<label for="category" class="form-label">Category</label>
@@ -44,11 +45,11 @@
 				
 				<div class="wrap-input validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Poster</span>
-								<img style="width:200px;height:200px;display: block; margin-left: auto; margin-right: auto" id="output" />
+								<img style="width:200px;height:200px;display: block; margin-left: auto; margin-right: auto" id="output"  />
 					
 					
 						<input type="file" class="form-control-file" name="poster" accept="image/*"
-							onchange="loadFile(event)" >
+							onchange="loadFile(event)" required >
 		  
 						<script>
 							
@@ -62,7 +63,12 @@
 						};
 						</script>
 						<br />
-				
+						<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+							<input class="form-check-input" type="checkbox" value="true" name="check" id="flexCheckDefault" <%- check === 'true' ? 'checked' : '' %>>
+							<label class="form-check-label" for="flexCheckDefault">
+							  Check to continue add movie
+							</label>
+					</div>
 				
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">
