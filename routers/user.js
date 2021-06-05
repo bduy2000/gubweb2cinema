@@ -48,7 +48,7 @@ router.post('/register',asyncHandler (async function(req,res){
      const hash = brcypt.hashSync(password,10);
      const found = await User.Register(name,email,hash,tel,category,code);
         if(found){
-            const context ="To register click here : localhost:3000/GUB/send?code="+code+"&userid="+found.id;
+            const context ="To register click here : https://gubcinemaweb.herokuapp.com/GUB/send?code="+code+"&userid="+found.id;
             Email.send(email,'Register',context);
             res.send(`Check your email to vertify your account`);
             }else{
