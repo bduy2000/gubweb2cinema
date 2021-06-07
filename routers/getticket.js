@@ -17,21 +17,25 @@ router.use(function(req,res,next){
     res.locals.link = '/GUB/home';
     next();
 })
+
+
+
+
 router.get('/getticket/:showtimeid',asyncHandler (async function(req,res){
     const {showtimeid} = req.params;
     const showtime = await ShowTime.findByPk(showtimeid);
     const theater = await Theater.findByPk(showtime.TheaterId);
-    const seats = await Ticket.findAll({include:{model: Booking,include:{model: ShowTime ,where:{id:showtimeid}} }});
+    const seats = await Ticket.findAll({include:[{model: Booking,right:true,include:[{model: ShowTime ,right:true,where:{id:showtimeid}}] }]});
+    console.log(seats);
     const check = [];
     seats.forEach(async (seat) => {
         check.push(seat.RegalSeat);
     });
-    
+    console.log(check);
     const width = theater.Width;
     const temp = theater.Height
     const height = temp.charCodeAt();
-   
-    
+
     res.render('booking',{width,height,showtime,check});
 }));
 router.post('/getticket/:showtimeid',asyncHandler (async function(req,res){
@@ -54,7 +58,9 @@ router.post('/getticket/:showtimeid',asyncHandler (async function(req,res){
     }
     const pay = await newbook.getTickets();
     res.locals.title = 'Hoadon';
-    res.render('pay',{pay,showtime})
+    
+    res.render('pay',{pay,showtime});
+   
     }else{
     res.locals.title = 'Error';
     const error = "Can not get ticket";
@@ -67,4 +73,5 @@ router.post('/getticket/:showtimeid',asyncHandler (async function(req,res){
  }
  
 }));
+
 module.exports = router;// do router cung la 1 cai module nen can export no ra

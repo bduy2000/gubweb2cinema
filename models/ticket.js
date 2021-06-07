@@ -20,9 +20,8 @@ Ticket.belongsTo(Booking);
 Booking.hasMany(Ticket,{onDelete: 'cascade', hooks:true});
 
 Ticket.checkRegalSeat = async function(seats,showtime){
-  
-  for(let j = 0 ; j < seats.length; j++){
-const check = await Ticket.findOne({include:[{model: Booking,include:[{model: ShowTime,where:{id: showtime}}]}],where:{RegalSeat: seats[j]}})
+for(let j = 0 ; j < seats.length; j++){
+const check = await Ticket.findOne({include:[{model: Booking ,right:true,include:[{model: ShowTime,right:true,where:{id: showtime}}]}],where:{RegalSeat: seats[j]}})
 if(check){
   return 1;
 }  

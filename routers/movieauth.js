@@ -3,11 +3,11 @@ const asyncHandler = require('express-async-handler');
 const express = require('express');
 const router = express.Router();
 const Cinema = require('../models/cinema');
+
 router.use(function(req,res,next){
     res.locals.title = 'Home';
     next();
 })
-
 
 
 router.get('/nowplaying',asyncHandler (async function(req,res){
@@ -15,6 +15,7 @@ router.get('/nowplaying',asyncHandler (async function(req,res){
     const cinemas = await Cinema.findAll();
         res.render('gubcinema/home/phimdangchieu',{nowplayings,cinemas});
         }));
+
 
 router.get('/hot',asyncHandler (async function(req,res){
             const hots = await Movie.findAll({where:{ Category: 'hot'}});
@@ -24,7 +25,6 @@ router.get('/hot',asyncHandler (async function(req,res){
 
 router.get('/comingsoon',asyncHandler (async function(req,res){
     const comingsoons = await Movie.findAll({where:{ Category: 'comingsoon'}});
- 
     const cinemas = await Cinema.findAll();
             res.render('gubcinema/home/phimsapchieu',{comingsoons,cinemas});
             }));
