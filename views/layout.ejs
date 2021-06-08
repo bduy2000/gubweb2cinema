@@ -177,12 +177,12 @@
                             </li>
                             <li>
                                 <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/khuyenmai">
-                                    <h1>Khuyen mai</h1>
+                                    <h1>Khuyến mãi</h1>
                                 </a>
                             </li>
                             <li>
                                 <a data-title="GUBCINEMA" data-description="GUBCINEMA" data-keyword="GUBCINEMA" href="/GUB/gioithieu">
-                                    <h1>Gioi thieu</h1>
+                                    <h1>Giới thiệu</h1>
                                 </a>
                             </li>
                            
@@ -219,7 +219,7 @@
                              <div class="tab-register">
         <div class="user-form register">
             <div class="icon-arrow"></div>
-            <h3 class="user-title">Please enter your information</h3>
+            <h3 class="user-title">Vui lòng nhập thông tin của bạn</h3>
             <form id="register-top" method="POST" action="/GUB/profile">
                 
                 <div class="require-col">
@@ -243,7 +243,7 @@
                         <input id="member_password" name="oldpassword" type="password"  />
                     </div>
                     <div class="input-text password">
-                        <span class="focus-text">PASSWORD (*)</span>
+                        <span class="focus-text">NEW PASSWORD (*)</span>
                         <input id="member_password" name="newpassword" type="password"  />
                     </div>
                     <div class="input-text confirmpass">
@@ -253,7 +253,7 @@
 
                     
                     <div class="input-but">
-                        <button type="submit"  id="btn-register-top" >Change</button>
+                        <button type="submit"  id="btn-register-top" >CHANGE</button>
                     </div>
                 </div>
             </form>
@@ -269,7 +269,7 @@
             <h3 class="user-title">Please enter your information</h3>
             <form id="register-top" method="POST" action="/GUB/user/register">
                 <div class="require-col">
-                    <label class="gender"><input type="radio" name="category" value="admin"><span
+                    <label class="gender"><input type="radio" name="category" value="admin" checked><span
                             class="gender-name">Admin</span><span class="gender-shape"></span></label>
                     <label class="gender"><input type="radio" name="category" value="customer" /><span
                             class="gender-name">Customer</span><span class="gender-shape"></span></label>
@@ -277,32 +277,32 @@
                 <div class="require-col">
                     <div class="input-text name">
                         <span class="focus-text">NAME</span>
-                        <input id="member_name" name="name" type="text" value="" />
+                        <input id="member_name" name="name" type="text" value="" required/>
                     </div>
                     
                    
     
                     <div class="input-text tel">
                         <span class="focus-text">TEL (*)</span>
-                        <input id="member_phone" name="tel" type="text" value="" />
+                        <input id="member_phone" name="tel" type="text" value="" required/>
                     </div>
                     <div class="input-text username">
                         <span class="focus-text">EMAIL (*)</span>
-                        <input id="member_username" name="email" type="text" value="" />
+                        <input id="member_username" name="email" type="text" value="" required/>
                     </div>
     
                 
                     <div class="input-text password">
                         <span class="focus-text">PASSWORD (*)</span>
-                        <input id="member_password" name="password" type="password" value="" />
+                        <input id="member_password" name="password" type="password" value="" required/>
                     </div>
                     <div class="input-text confirmpass">
                         <span class="focus-text">CONFIRM PASSWORD (*)</span>
-                        <input id="member_password_confirm" name="confirmpassword" type="password" value="" />
+                        <input id="member_password_confirm" name="confirmpassword" type="password" value="" required/>
                     </div>
                     
                     <div class="input-but">
-                        <button type="submit"  id="btn-register-top" >Register</button>
+                        <button type="submit"  id="btn-register-top" >REGISTER</button>
                     </div>
                 </div>
             </form>
@@ -341,14 +341,14 @@
                                         <form id="login-top" method="POST" action="/GUB/user/login">
                                             <div class="require-col">
                                                 <div class="input-text username">
-                                                    <input name="email" id="login_email" type="text" />
+                                                    <input name="email" id="login_email" type="text" required/>
                                                 </div>
                                                 <div class="input-text password">
-                                                    <input name="password" id="login_password" type="password"  />
+                                                    <input name="password" id="login_password" type="password"  required/>
                                                 </div>
                                                 <div class="input-but">
-                                                    <button type="submit" class="btn btn-warning" >Log in</button>
-                                                    <a class="user-link" href="javascript:void(0);">Recovery account</a>
+                                                    <button type="submit" class="btn btn-warning" >LOG IN</button>
+                                                    <a class="user-link" href="javascript:void(0);">RECOVERY</a>
                                                 </div>
                                             </div>
                                         </form>
@@ -360,15 +360,15 @@
                                         <form id="forgot-top" action="/GUB/user/revive" method="POST">
                                             <div class="require-col">
                                                 <div class="input-text username">
-                                                    <input id="login_email" name="email" type="text"  />
+                                                    <input id="login_email" name="email" type="text"  required/>
                                                 </div>
                                                 <div class="input-text address">
-                                                    <input id="login_email" name="tel" type="text"  />
+                                                    <input id="login_email" name="tel" type="text"  required/>
                                                 </div>
                                                 
                                                 <div class="input-but">
-                                                    <button type="submit" id="btn-send-top" >Send</button>
-                                                    <a class="user-link" href="javascript:void(0);">Quay lại trang đăng nhập</a>
+                                                    <button type="submit" id="btn-send-top" >SEND</button>
+                                                    <a class="user-link" href="javascript:void(0);">RETURN LOGIN PAGE</a>
                                                 </div>
                                             </div>
                                         </form>

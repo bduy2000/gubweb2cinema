@@ -26,6 +26,9 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
 }))
 
+
+
+
 app.use(userMiddleware);
 app.use(express.urlencoded({extended: false}));// ham xu li cac du lieu dc post len
 app.use(express.static(__dirname + '/public'));//nhung cai trong thu muc public co the load len
@@ -40,6 +43,8 @@ app.use(TheaterRouter);
 app.use(MovieRouter);
 app.use(ShowTimeRouter);
 app.use(StatisticRouter);
+
+
 //Template
 app.set('view engine','ejs');//Dung ejs
 
