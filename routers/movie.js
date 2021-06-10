@@ -91,7 +91,7 @@ router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async funct
         if(ampersandPosition != -1) {
         link = link.substring(0, ampersandPosition);
         }
-        movie.Trailers = link;
+        movie.Trailer = link;
         }
         if(genres){
             movie.Genres = genres;
