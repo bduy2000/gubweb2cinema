@@ -38,12 +38,15 @@ router.get('/movie',asyncHandler (async function(req,res){
 
 router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req, res) {
     const {Name,Time,ReleaseDate,Decription,Category,check,trailer,Genres,Actors,Directors} = req.body;
+  
     const link = trailer.split('v=')[1];
+
     const ampersandPosition = link.indexOf('&');
+    console.log(ampersandPosition);
     if(ampersandPosition != -1) {
-    link = link.substring(0, ampersandPosition);
+    var link1 = link.substr(0, ampersandPosition);
     }
-    const movie = await Movie.create({Name , Time, ReleaseDate , Decription,Category,Trailer:link,Genres,Actors,Directors });
+    const movie = await Movie.create({Name , Time, ReleaseDate , Decription,Category, Trailer:link1 ,Genres,Actors,Directors });
     if(movie){
         movie.Poster = req.file.buffer;
         await movie.save();
@@ -60,6 +63,7 @@ router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req
     const error = "Add monie unsucessfully";
     res.render('alerts/alerts',{error});
     }
+
 }));
 
 
@@ -89,9 +93,9 @@ router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async funct
         const link = trailer.split('v=')[1];
         const ampersandPosition = link.indexOf('&');
         if(ampersandPosition != -1) {
-        link = link.substring(0, ampersandPosition);
+        var link1 = link.substr(0, ampersandPosition);
         }
-        movie.Trailer = link;
+        movie.Trailer = link1;
         }
         if(genres){
             movie.Genres = genres;
