@@ -1,4 +1,4 @@
-<% if(currentUser && currentUser.Category == 'admin' && title != 'Error' ){ %>
+<% if(currentUser && currentUser.Category == 'admin' && title != 'Error' && title != 'Trailer' ){ %>
    <%  if(title != 'Statistic'){ %>
     <!DOCTYPE html>
     <html lang="en">
@@ -64,7 +64,7 @@
 </html>
   <%}%>
 <% }else{ %>
-    <% if(title != 'Datve' && title != 'Hoadon' && title != 'Error'){ %> 
+    <% if(title != 'Datve' && title != 'Hoadon' && title != 'Error' && title != 'Trailer'){ %> 
     <!DOCTYPE HTML>
     <html lang="vi">
     
@@ -387,23 +387,23 @@
                 <div class="slider-home" data-time="5000">
                     <div class="slide-bg">
                         <div class="bg-home">
-                            <a href="http://cinestar.com.vn/khuyenmai/c-monday">
+                            <a href="/GUB/home">
                                 <img src="/pictures/c'monday.jpg" alt="bg" /></a>
                         </div>
                         <div class="bg-home">
-                            <a href="http://cinestar.com.vn/khuyenmai/combobigstaruudaithuba">
+                            <a href="/GUB/home">
                                 <img src="/pictures/capture.png" alt="bg" /></a>
                         </div>
                         <div class="bg-home">
-                            <a href="http://cinestar.com.vn/khuyenmai/c-member">
+                            <a href="/GUB/home">
                                 <img src="/pictures/c'member.jpg" alt="bg" /></a>
                         </div>
                         <div class="bg-home">
-                            <a href="http://cinestar.com.vn/khuyenmai/c-student">
+                            <a href="/GUB/home">
                                 <img src="/pictures/z2161740555387_88fc044837bea7695ee9ec8320a39cef.jpg" alt="bg" /></a>
                         </div>
                         <div class="bg-home">
-                            <a href="http://cinestar.com.vn/khuyenmai/c-ten">
+                            <a href="/GUB/home">
                                 <img src="/pictures/z2161740555616_cf6d683f88aa9447af57b89917e84acb.jpg" alt="bg" /></a>
                         </div>
                     </div>
@@ -512,4 +512,7 @@
    <% if(title == 'Error'){%>
     <%- body%>
     <%}%> 
+    <% if(title == 'Trailer'){%>
+        <%- body%>
+        <%}%> 
    <% } %>

@@ -37,8 +37,13 @@ router.get('/movie',asyncHandler (async function(req,res){
         })); 
 
 router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req, res) {
-    const {name,time,releasedate,decription,category,check} = req.body;
-    const movie = await Movie.create({Name: name , Time: time, ReleaseDate: releasedate , Decription: decription,Category: category});
+    const {Name,Time,ReleaseDate,Decription,Category,check,trailer,Genres,Actors,Directors} = req.body;
+    const link = trailer.split('v=')[1];
+    const ampersandPosition = link.indexOf('&');
+    if(ampersandPosition != -1) {
+    link = link.substring(0, ampersandPosition);
+    }
+    const movie = await Movie.create({Name , Time, ReleaseDate , Decription,Category,Trailer:link,Genres,Actors,Directors });
     if(movie){
         movie.Poster = req.file.buffer;
         await movie.save();
@@ -74,11 +79,28 @@ router.get('/movie/update/:id',asyncHandler (async function(req,res){
 
 router.post('/movie/update/:id',upload.single('poster'),asyncHandler(async function(req, res) {
     const id = req.params.id;
-    const {name,time,releasedate,decription,category} = req.body;
+    const {name,time,releasedate,decription,category,trailer,genres,actors,directors} = req.body;
     const movie = await Movie.findByPk(id);
     if(movie){
         if(name){
             movie.Name = name;
+        }
+        if(trailer){
+        const link = trailer.split('v=')[1];
+        const ampersandPosition = link.indexOf('&');
+        if(ampersandPosition != -1) {
+        link = link.substring(0, ampersandPosition);
+        }
+        movie.Trailers = link;
+        }
+        if(genres){
+            movie.Genres = genres;
+        }
+        if(actors){
+            movie.Actors = actors;
+        }
+        if(directors){
+            movie.Directors = directors;
         }
         if(time){
             movie.Time = time;

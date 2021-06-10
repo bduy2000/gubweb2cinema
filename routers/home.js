@@ -101,7 +101,13 @@ router.get('/datve/:movieid/:cinemaid/:date',asyncHandler (async function(req,re
     
 }));
 
-
+router.get('/trailer',asyncHandler (async function(req,res){
+const {code} = req.query;
+if(code){
+    res.locals.title = 'Trailer';
+res.render('gubcinema/home/trailer',{code});
+}
+}))
 
 router.get('/lichchieu',asyncHandler (async function(req,res){
     res.locals.title = 'Lich chieu';

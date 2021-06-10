@@ -16,9 +16,18 @@
 					<span class="label-input100">Name</span>
 					<input class="input100" type="text" name="name" placeholder="Vui lòng nhập tên phim" required>
 				</div>
-			
-	
-
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Directors</span>
+					<input class="input100" type="text" name="Directors" placeholder="Vui lòng nhập đạo diễn" required>
+				</div>
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Actors</span>
+					<input class="input100" type="text" name="Actors" placeholder="Vui lòng nhập diễn viên" required>
+				</div>
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Genres</span>
+					<input class="input100" type="text" name="Genres" placeholder="Vui lòng nhập thể loại" required>
+				</div>
 				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Time</span>
 					<input class="input100" type="number" name="time" placeholder="Vui lòng nhập thời lượng" required/>
@@ -42,6 +51,33 @@
 						</select>
 					 </div>
 				</div>
+				<iframe src="https://www.youtube.com/embed/" style="width:500px;height:450px;display: block; margin-left: auto; margin-right: auto" id="youtube" ></iframe>
+				<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Youtube</span>
+					<input class="input100" type="text" name="trailer" id="trailer" required>
+					<script>
+							
+							document.getElementById("trailer").onchange = function() {myFunction()};
+
+								function myFunction() {
+								var link = document.getElementById("trailer").value;
+								
+ 								 var x = link.split('v=')[1];
+								  console.log(x);
+								  var ampersandPosition = x.indexOf('&');
+								  
+									if(ampersandPosition != -1) {
+ 									 x = x.substring(0, ampersandPosition);
+									 
+									}
+									console.log(x);
+									document.getElementById("youtube").src = "https://www.youtube.com/embed/"+x;
+									console.log(document.getElementById("youtube").src);
+								}
+					</script>
+				</div>
+				
+				
 				
 				<div class="wrap-input validate-input bg0 rs1-alert-validate">
 					<span class="label-input100">Poster</span>
@@ -63,6 +99,7 @@
 						};
 						</script>
 						<br />
+						
 						<div class="wrap-input100 validate-input bg0 rs1-alert-validate">
 							<input class="form-check-input" type="checkbox" value="true" name="check" id="flexCheckDefault" <%- check === 'true' ? 'checked' : '' %>>
 							<label class="form-check-label" for="flexCheckDefault">

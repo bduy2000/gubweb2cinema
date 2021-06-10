@@ -19,9 +19,21 @@ const Movie = db.define('Movie', {
     Decription:{
         type: DataTypes.TEXT,
     },
+    Trailer:{
+      type: DataTypes.TEXT,
+    },
     Category:{
         type: DataTypes.STRING,
     },
+    Genres:{
+      type: DataTypes.STRING,
+    },
+    Actors:{
+      type: DataTypes.STRING,
+    },
+    Directors:{
+      type: DataTypes.STRING,
+    }
   });
 
   Movie.findbyName = async function (name){
