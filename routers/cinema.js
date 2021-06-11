@@ -27,8 +27,9 @@ router.get('/cinema',asyncHandler (async function(req,res){
 
 router.post('/cinema/add',asyncHandler (async function(req,res){
     const {name,address,check} = req.body;
-
-    const cinema = await Cinema.create({Name: name,Address:address});
+    const max = await Cinema.max('id');
+    const id = max + 1;
+    const cinema = await Cinema.create({id,Name: name,Address:address});
     if(cinema){
         if(check){
             req.session.check = 'true';

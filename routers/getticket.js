@@ -49,11 +49,13 @@ router.post('/getticket/:showtimeid',asyncHandler (async function(req,res){
  const money = count*showtime.Price; 
  const d = new Date();
  const check = await Ticket.checkRegalSeat(seats,showtimeid);
- console.log(check);
+
  if(check == 0){
     const newbook = await Booking.create({TotalPrice: money,DateTime: d,ShowTimeId: showtimeid,UserId: user.id});
     if(newbook){
     for(let i = 0 ; i < seats.length ; i++){
+    const max = await Ticket.max('id');
+    const id = max + 1;
     await Ticket.create({RegalSeat: seats[i],Price: showtime.Price,BookingId:newbook.id});
     }
     const pay = await newbook.getTickets();

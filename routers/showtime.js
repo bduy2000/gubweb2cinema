@@ -39,7 +39,9 @@ router.post('/showtime/add', asyncHandler(async function (req, res) {
    
         const end =  moment(timebegin,'hh:mm').add(movie.Time, 'minutes').format('hh:mm');
       if(MovieId && TheaterId){
-        const newshowtime = await ShowTime.create({ TimeBegin: timebegin, MovieId: MovieId, TheaterId: TheaterId, TimeFinish: end, Price: price, DateShow: dateshow });
+        const max = await ShowTime.max('id');
+        const id = max + 1;
+        const newshowtime = await ShowTime.create({ id,TimeBegin: timebegin, MovieId: MovieId, TheaterId: TheaterId, TimeFinish: end, Price: price, DateShow: dateshow });
         if (newshowtime) {
             if(check){
                 req.session.check = 'true';

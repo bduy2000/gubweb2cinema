@@ -32,7 +32,9 @@ router.post('/theater/add',asyncHandler (async function(req,res){
     const {name,width,height,category,CinemaId,check} = req.body;
     const cinema = await Cinema.findByPk(CinemaId);
     if(cinema){
-        const theater = await cinema.createTheater({Name: name,Width: width , Height: height, Category: category });
+        const max = await Theater.max('id');
+        const id = max + 1;
+        const theater = await cinema.createTheater({id,Name: name,Width: width , Height: height, Category: category });
         if(theater){
             if(check){
                 req.session.check = 'true';
