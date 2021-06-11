@@ -11,7 +11,8 @@ const Booking = db.define('Booking', {
       TotalPrice: {
         type: DataTypes.INTEGER,
       }, 
-  });
+
+  },{timestamps: false});
 
   Booking.belongsTo(ShowTime);
   ShowTime.hasMany(Booking,{onDelete: 'cascade', hooks:true});

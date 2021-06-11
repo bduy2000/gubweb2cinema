@@ -10,5 +10,6 @@ const Cinema = db.define('Cinema', {
       Address:{
         type: DataTypes.TEXT,
       },
-  });
+      
+  },{timestamps: false});
   module.exports = Cinema;

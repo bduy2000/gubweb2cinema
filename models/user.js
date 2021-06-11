@@ -26,8 +26,8 @@ const User = db.define('User', {
       type: DataTypes.STRING,
       allowNull:  true
     },
-    
-  });
+
+  },{timestamps: false});
 
 
 User.ResetCode = async function(code,id){

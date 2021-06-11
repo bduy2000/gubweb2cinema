@@ -44,7 +44,7 @@ router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req
     if(ampersandPosition != -1) {
     link = link.substr(0, ampersandPosition);
     }
-    const movie = await Movie.create({Name:Name , Time:Time, ReleaseDate:ReleaseDate , Decription:Decription,Category:Category, Trailer:link ,Genres:Genres,Actors:Actors,Directors:Directors });
+    const movie = await Movie.create({Name , Time, ReleaseDate, Decription,Category, Trailer:link ,Genres,Actors,Directors});
     if(movie){
         movie.Poster = req.file.buffer;
         await movie.save();

@@ -33,8 +33,9 @@ const Movie = db.define('Movie', {
     },
     Directors:{
       type: DataTypes.STRING,
-    }
-  });
+    },
+
+  },{timestamps: false});
 
   Movie.findbyName = async function (name){
     return Movie.findAll({where:{Name:{[Op.like]: '%'+name+'%',}}});

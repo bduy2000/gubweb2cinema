@@ -17,7 +17,8 @@ const Theater = db.define('Theater', {
     Height:{
         type: DataTypes.STRING,
     },
-  });
+    
+  },{timestamps: false});
 
   // 1 todo chi co 1 user con 1 user co nhiu todo
 Theater.belongsTo(Cinema);

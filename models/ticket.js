@@ -12,8 +12,8 @@ const Ticket = db.define('Ticket', {
     Price:{
         type: DataTypes.INTEGER,
       },
-    
-  });
+  
+  },{timestamps: false});
 
     // 1 todo chi co 1 user con 1 user co nhiu todo
 Ticket.belongsTo(Booking);

@@ -15,9 +15,9 @@ const ShowTime = db.define('ShowTime', {
       },
     DateShow:{
       type: DataTypes.DATEONLY,
-    }
-    
-  });
+    },
+ 
+  },{timestamps: false});
 
 ShowTime.belongsTo(Movie);
 Movie.hasMany(ShowTime,{onDelete: 'cascade', hooks:true});
