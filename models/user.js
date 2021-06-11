@@ -52,7 +52,7 @@ User.findbyEmail = async function(Email){
     return User.findByPk(id);
    }
 
-   User.Register = async function(name,email,password,tel,category,code){
-    return await User.create({ Name:name, Email: email, Password: password ,Tel: tel,Category: category,Code:code});
+   User.Register = async function(id,name,email,password,tel,category,code){
+    return await User.create({ id,Name:name, Email: email, Password: password ,Tel: tel,Category: category,Code:code});
    }
 module.exports = User;
