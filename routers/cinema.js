@@ -27,7 +27,10 @@ router.get('/cinema',asyncHandler (async function(req,res){
 
 router.post('/cinema/add',asyncHandler (async function(req,res){
     const {name,address,check} = req.body;
-    const max = await Cinema.max('id');
+    var max = await Cinema.max('id');
+    if(!max){
+        max = 0;
+    }
     const id = max + 1;
     const cinema = await Cinema.create({id,Name: name,Address:address});
     if(cinema){
