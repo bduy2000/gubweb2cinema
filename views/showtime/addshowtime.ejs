@@ -121,10 +121,10 @@
                     <label for="input_starttime">Date Show</label>
                     <input  type="date" id="input_starttime" name="dateshow" required >
                  </div>
-                 <label for="price">Price</label>
-                 <div class="wrap-input100 ">
-                    <input  type="number" id="price" name="price" required>
-                 </div>
+                 <div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+					<span class="label-input100">Price</span>
+					<input class="input100" type="number" name="price" placeholder="Vui lòng điền giá vé" required>
+				</div>
                  <div class="wrap-input100 validate-input bg0 rs1-alert-validate">
                     <input class="form-check-input" type="checkbox" value="true" name="check" id="flexCheckDefault" <%- check === 'true' ? 'checked' : '' %>>
                     <label class="form-check-label" for="flexCheckDefault">

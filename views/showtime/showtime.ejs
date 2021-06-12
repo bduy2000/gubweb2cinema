@@ -20,59 +20,45 @@
 					<div class="card shadow mb-4">
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
 									<thead>
-									<tr>
+									<tr style="text-align: center; vertical-align: middle;"  >
 										<th>Movie</th>
 										<th>Theater</th>
+										<th>Cinema</th>
 										<th>Time Begin</th>
 										<th>Time Finish</th>
 										<th>Date Show</th>
 										<th>Price</th>
-										<th>Update</th>
 										<th>Delete</th>
 									</tr>
 									</thead>
-									<tfoot>
-									<tr>
-										<th>Movie</th>
-										<th>Theater</th>
-										<th>Time Begin</th>
-										<th>Time Finish</th>
-										<th>Date Show</th>
-										<th>Price</th>
-										<th>Update</th>
-										<th>Delete</th>
-										
-									</tr>
-				
-									</tfoot>
+									
 									<tbody>
 										<% showtimes.forEach(function(showtime) { %>
-										<%	if(showtime.MovieId && showtime.TheaterId){ %>
-									<tr>
-										<td><%- showtime.Movie.Name %></td>
-										<td><%- showtime.Theater.Name %></td>
-              							<td><%- showtime.TimeBegin %></td>
-              							<td><%- showtime.TimeFinish %></td>
-              							<td><%- showtime.DateShow %></td>
-              							<td><%- showtime.Price %></td>
-										  <td>
-											<button onclick="window.location.href='/showtime/update/<%-showtime.id-%> '" class="btn btn-primary btn-circle btn-sm"><i
-												class="fas fa-trash"></i>
-									</button>
-										  </td>
+										
+									<tr style="text-align: center; vertical-align: middle;" >
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Movie.Name %></td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Theater.Name %></td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Theater.Cinema.Name %></td>
+              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.TimeBegin %></td>
+              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.TimeFinish %></td>
+              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.DateShow %></td>
+              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Price %></td>
+										  
 										<td>
 											
-												<button onclick="window.location.href='/showtime/delete/<%-showtime.id-%> '" class="btn btn-danger btn-circle btn-sm"><i
-															class="fas fa-trash"></i>
+												<button style="z-index: 3;position: relative;" onclick="window.location.href='/showtime/delete/<%-showtime.id-%> '" class="btn btn-danger btn-circle btn-sm">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+														<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+													  </svg>
 												</button>
 											
 										</td>
 										
 
 									</tr>
-								<% }})  %>
+								<% })  %>
 								
 									</tbody>
 								</table>

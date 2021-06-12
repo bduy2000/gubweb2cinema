@@ -16,7 +16,7 @@ router.use(function (req, res, next) {
 })
 //create
 router.get('/showtime', asyncHandler(async function (req, res) {
-    const showtimes = await ShowTime.findAll({ include: [{ model: Theater }, { model: Movie }] });
+    const showtimes = await ShowTime.findAll({ include: [{ model: Theater ,include:Cinema}, { model: Movie }] });
     res.render('showtime/showtime', { showtimes });
 }));
 
