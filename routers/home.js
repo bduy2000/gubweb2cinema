@@ -13,6 +13,14 @@ router.use(function(req,res,next){
     res.locals.title = 'Home';
     next();
 })
+router.get('/cinema/picture/:id', asyncHandler( async function(req,res){
+    const cinema = await Cinema.findByPk(req.params.id);
+    if(!cinema || !cinema.Picture){
+        res.status(404).send('File not fould');
+    }else{
+        res.header('Content-Type','image/jpeg').send(cinema.Picture);
+    }
+     }));
 
 router.get('/movie/picture/:id', asyncHandler( async function(req,res){
     const movie = await Movie.findByPk(req.params.id);
