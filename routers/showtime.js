@@ -7,7 +7,7 @@ const ShowTime = require('../models/showtime');
 const ensureadmin = require('../middlewares/ensure_admin');
 const Cinema = require('../models/cinema');
 const moment = require('moment');
-
+const { Op } = require('sequelize');
 router.use(ensureadmin);
 router.use(function (req, res, next) {
     res.locals.title = 'Showtime';
@@ -22,7 +22,7 @@ router.get('/showtime', asyncHandler(async function (req, res) {
 
 router.get('/showtime/add', asyncHandler(async function (req, res) {
     const theaters = await Theater.findAll({include:Cinema});
-    const movies = await Movie.findAll();
+    const movies = await Movie.findAll({where:{[Op.or]:[{Category: 'nowplaying'},{Category:'hot'}]}});
     if(req.session.check){
         res.locals.check = 'true';
     }else{
