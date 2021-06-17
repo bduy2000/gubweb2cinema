@@ -1,65 +1,68 @@
-
-	<div class="container">
-		
-		<!-- Simple Datatable start -->
-		<div class="card-box mb-30">
-			<button style="height: 30px; width: 30px; margin-left: 0.2cm; margin-top: 0.2cm;" type="button" onclick="window.location.href='/GUB/admin'"><--</button>
-			<div class="row" style="margin-left: 540px; padding-top: 30px;">
-				<div class="col-auto">
-					<h4>From</h4>
-				</div>
-				<div class="col-auto">
-					<input type="date" id="datepicker">		
-				</div>
-				<div class="col-auto">
-					<h4>To</h4>
-				</div>
-				<div class="col-auto">
-					<input type="date" onchange="getStatic()" id="datepicker2">
-				</div>
-			</div>
-			<form id="getstatic" action="/statistic/cinemas" method="POST">
-            <input id="from" name="from" type="hidden" />
-            <input id="to" name="to" type="hidden" />
-        </form>
-
+<script src="/statistic/cinema.js"></script>
+<div class="container">  
         
-        <script>
-            function getStatic() {
-                if ($('#datepicker').val() != '') {
-					var from = $('#datepicker').val();
-                    var to = $("#datepicker2").val();
-                    $('#from').val(from);
-                    $('#to').val(to);
-                    $('#getstatic').submit();
-                } 
-            }
-        </script>
-			<div class="pd-20">
-				<h2 class="text-blue h2">Revenue Statistics By Cinema</h2>
+	<!-- Simple Datatable start -->
+	<div class="card-box mb-30">
+		<button style="height: 30px; width: 30px; margin-left: 0.2cm; margin-top: 0.2cm;" type="button" onclick="window.location.href='/GUB/admin'"><--</button>
+		<div class="pd-20 text-center">
+			<h2>GUB' S REVENUE BY CINEMA</h2>
+		</div>
+		<div class="row" style="margin-left: 540px; padding-top: 30px;">
+
+			<div class="col-auto">
+				<h4>From</h4>
 			</div>
-			
-			<div class="pb-20">
-				<table class="data-table table stripe hover nowrap">
-					<thead>
-						<tr>
-							<th class="table-plus ">Name</th>
-							<th>Revenue (VNĐ)</th>
-							<th>Number of tickets sold</th>
-							
-						</tr>
-					</thead>
-					<tbody>
-						<% cinemas.forEach(function(cinema) { %>
-						<tr>
-							<td class="table-plus"><%- cinema.Name %></td>
-							<td><%- cinema.dataValues.TotalPrice %></td>
-							<td><%- cinema.dataValues.count %></td>
-						</tr>
-						<%})%>
-					</tbody>
-				</table>
+			<div class="col-auto">
+				<input type="date" id="datepicker" onchange="getStatic()">		
+			</div>
+			<div class="col-auto">
+				<h4>To</h4>
+			</div>
+			<div class="col-auto">
+				<input type="date" onchange="getStatic()" id="datepicker2">
 			</div>
 		</div>
-		<!-- Simple Datatable End -->
+		
+	<div id="graph-container">
+		<canvas id="myChart"></canvas>
 	</div>
+	
+	<script>
+		function getStatic() {
+			if ($('#datepicker').val() != '' && $('#datepicker2').val() != '') {
+
+				var from = $('#datepicker').val();
+				var to = $("#datepicker2").val();
+				$.get('/statistic/chart/cinemas?'+'from='+from+'&to='+to,function(data){
+				var chartcanvas = document.getElementById('myChart');
+				chartcanvas.remove(); // this is my <canvas> element
+				  $('#graph-container').append('<canvas id="myChart"><canvas>');
+				  var newchart = document.querySelector('#myChart');
+				var ctx = newchart.getContext('2d');
+				myChart = new Chart(ctx, {
+				type: 'bar',
+					data,
+				options: {
+				responsive: true,
+				scales: {
+				'revenue': {
+					position: 'left'
+				},
+				'count': {
+					position: 'right'
+				}
+				},
+				
+				}
+				}); 
+});
+
+			} 
+		}
+	</script>
+		
+	</div>
+	<!-- Simple Datatable End -->
+</div>
+
+<!-- js -->

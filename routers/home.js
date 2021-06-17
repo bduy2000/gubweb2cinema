@@ -93,10 +93,17 @@ res.render('gubcinema/home/gioithieu',{nowplayings,cinemas});
 router.get('/lichchieuchitiet/:id/:date',asyncHandler (async function(req,res){
     res.locals.title = 'Lich chieu';
     const {id,date} = req.params;
+    const cinema = await Cinema.findByPk(id);
+    if(cinema){
+    const name_cinema = cinema.Name;  
     const movies = await Movie.findAll({include:[{model:ShowTimes,where:{DateShow: date},include:[{model:Theater,where:{CinemaId: id}}]}]});
-   const cinemas = await Cinema.findAll();
-    res.render('gubcinema/home/lichchieuchitiet',{cinemas,movies,id,date});
-    
+    const cinemas = await Cinema.findAll();
+    res.render('gubcinema/home/lichchieuchitiet',{cinemas,movies,id,date,name_cinema});
+    }else{
+        res.locals.title = 'Error';
+        const error = "Page not found";
+        res.render('alerts/alerts',{error});
+    }
 }));
 
 router.get('/datve/:movieid/:cinemaid/:date',asyncHandler (async function(req,res){

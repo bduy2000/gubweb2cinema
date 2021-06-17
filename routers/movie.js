@@ -63,7 +63,7 @@ router.post('/movie/add',upload.single('poster'),asyncHandler(async function(req
         
     }else{
         res.locals.title = 'Error';
-    const error = "Add monie unsucessfully";
+    const error = "Add movie unsucessfully";
     res.render('alerts/alerts',{error});
     }
 
