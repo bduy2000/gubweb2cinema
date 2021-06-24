@@ -1,77 +1,138 @@
-<button style="height: 50px; width: 50px;" type="button" class="btn-close" aria-label="Close" onclick="window.location.href='/GUB/admin'"></button>
-    <div class="container-contact100">
-		<div class="wrap-contact100">
-                 <center>
-				<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
-					ShowTime
-				</span>
-                </center>
+<button style="height: 50px; width: 50px;" type="button" class="btn-close" aria-label="Close"
+	onclick="window.location.href='/GUB/admin'"></button>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="container-contact100">
 
-				<div class="container-fluid">
+	<div class="wrap-contact100">
+		<center>
+			<span class="contact100-form-title" style="color: #000022; font-weight: bold;font-size:45px">
+				ShowTime
+			</span>
+		</center>
+		<div class="row mt-3 mb-3">
+			<div class="col ms-3">
+				<select class="form-select" aria-label="Default select example" id="cineplex-select-showtimes"
+					onchange="getshowtime()">
+					<% cinemas.forEach(function(cinema) { %>
+						<option value="<%- cinema.id %>" <%- cinema.id.toString()===cinemaid ? 'selected' : '' %>>
+							<%-cinema.Name%>
+						</option>
+						<%})%>
+				</select>
+			</div>
+			<div class="col me-3">
+				<select class="form-select" aria-label="Default select example" id="date-select-showtimes"
+					onchange="getshowtime()">
+					<option value="2021-05-20" <%- dateshow==='2021-05-20' ? 'selected' : '' %>>20-5</option>
+					<option value="2021-05-21" <%- dateshow==='2021-05-21' ? 'selected' : '' %>>21-5</option>
+					<option value="2021-05-22" <%- dateshow==='2021-05-22' ? 'selected' : '' %>>22-5</option>
+					<option value="2021-05-23" <%- dateshow==='2021-05-23' ? 'selected' : '' %>>23-5</option>
+					<option value="2021-05-24" <%- dateshow==='2021-05-24' ? 'selected' : '' %>>24-5</option>
+					<option value="2021-05-25" <%- dateshow==='2021-05-25' ? 'selected' : '' %>>25-5</option>
+					<option value="2021-05-26" <%- dateshow==='2021-05-26' ? 'selected' : '' %>>26-5</option>
+				</select>
+			</div>
+		</div>
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">ShowTime
-						<a href="/showtime/add" class="btn btn-success btn-circle pull-left">
-							<i>+</i>
-						</a>
-					</h1>
-				
-					<!-- DataTales Example -->
-					<div class="card shadow mb-4">
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-									<thead>
-									<tr style="text-align: center; vertical-align: middle;"  >
-										<th>Movie</th>
-										<th>Theater</th>
-										<th>Cinema</th>
-										<th>Time Begin</th>
-										<th>Time Finish</th>
-										<th>Date Show</th>
-										<th>Price</th>
-										<th>Delete</th>
-									</tr>
-									</thead>
-									
-									<tbody>
-										<% showtimes.forEach(function(showtime) { %>
-										
-									<tr style="text-align: center; vertical-align: middle;" >
-										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Movie.Name %></td>
-										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Theater.Name %></td>
-										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Theater.Cinema.Name %></td>
-              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.TimeBegin %></td>
-              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.TimeFinish %></td>
-              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.DateShow %></td>
-              							<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '"><%- showtime.Price %></td>
-										  
-										<td>
-											
-												<button style="z-index: 3;position: relative;" onclick="window.location.href='/showtime/delete/<%-showtime.id-%> '" class="btn btn-danger btn-circle btn-sm">
-													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-														<path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-													  </svg>
-												</button>
-											
+
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<h1 class="h3 mb-2 text-gray-800">ShowTime
+				<a href="/showtime/add" class="btn btn-success btn-circle pull-left">
+					<i>+</i>
+				</a>
+			</h1>
+
+			<!-- DataTales Example -->
+			<div class="card shadow mb-4">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr style="text-align: center; vertical-align: middle;">
+									<th>Movie</th>
+									<th>Theater</th>
+									<th>Cinema</th>
+									<th>Time Begin</th>
+									<th>Time Finish</th>
+									<th>Date Show</th>
+									<th>Price</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<% showtimes.forEach(function(showtime) { %>
+
+									<tr style="text-align: center; vertical-align: middle;">
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.Movie.Name %>
 										</td>
-										
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.Theater.Name %>
+										</td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.Theater.Cinema.Name %>
+										</td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.TimeBegin %>
+										</td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.TimeFinish %>
+										</td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.DateShow %>
+										</td>
+										<td onclick="window.location.href='/showtime/update/<%-showtime.id-%> '">
+											<%- showtime.Price %>
+										</td>
+
+										<td>
+
+											<button style="z-index: 3;position: relative;"
+												onclick="window.location.href='/showtime/delete/<%-showtime.id-%> '"
+												class="btn btn-danger btn-circle btn-sm">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+													fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+													<path
+														d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+												</svg>
+											</button>
+
+										</td>
+
 
 									</tr>
-								<% })  %>
-								
-									</tbody>
-								</table>
-							</div>
-						</div>
+									<% }) %>
+
+							</tbody>
+						</table>
 					</div>
-				
 				</div>
-	
-				
-				</div>
-    </div>
+			</div>
 
-    
-    
 
+		</div>
+
+
+	</div>
+</div>
+
+
+
+<form id="showtime" method="GET">
+	<input type="hidden" name="cinemaid" id="id">
+	<input type="hidden" name="dateshow" id="date">
+  </form>
+<script>
+	function getshowtime() {
+		if ($('#cineplex-select-showtime').val() != '' && $('#date-select-showtime').val() != '') {
+			var id = $('#cineplex-select-showtimes').val();
+			var date = $('#date-select-showtimes').val();
+			$('#id').val(id);
+			$('#date').val(date);
+			$('#showtime').submit();
+		}
+	}
+</script>

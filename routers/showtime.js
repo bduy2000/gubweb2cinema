@@ -16,8 +16,21 @@ router.use(function (req, res, next) {
 })
 //create
 router.get('/showtime', asyncHandler(async function (req, res) {
-    const showtimes = await ShowTime.findAll({ include: [{ model: Theater ,include:Cinema}, { model: Movie }] });
-    res.render('showtime/showtime', { showtimes });
+    var {dateshow ,cinemaid} = req.query;
+    const cinemas = await Cinema.findAll();
+    if(!dateshow && !cinemaid){
+        dateshow='2021-05-20';
+        if(cinemas){
+            cinemaid = cinemas[0].id;
+        }
+    }
+    const showtimes = await ShowTime.findAll({ 
+        order:[['TimeBegin','ASC']],
+        include:[{model: Theater,right: true,attributes:['Name'],include:[{model: Cinema,right:true,attributes:['Name'],where:{id: cinemaid}}]},
+        {model: Movie,attributes:['Name'] }],
+        where:{DateShow: dateshow}
+    });
+    res.render('showtime/showtime', { showtimes ,dateshow,cinemas,cinemaid});
 }));
 
 router.get('/showtime/add', asyncHandler(async function (req, res) {
