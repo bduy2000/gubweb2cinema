@@ -1,7 +1,7 @@
-# Bcinema Project (  )
+# Bcinema Project - Finally Project Web 2 (  )
 
 ## About Project
-<p>- This project is a website which buy movie tickets and manage cinema,theater,movie,showtime,.. It consists of :  <p>
+<p>- BCinema is a website which buy movie tickets and manage cinema,theater,movie,showtime,..Well, it consists of :  <p>
 
 ### Customer
 1. Create,register,recovery account by email
