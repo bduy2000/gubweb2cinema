@@ -46,8 +46,9 @@ router.get('/home',asyncHandler (async function(req,res){
 
 router.post('/search',asyncHandler(async function(req,res){
     const {name} = req.body;
+    const searchvalue = name.toUpperCase();
     const cinemas = await Cinema.findAll();
- const movies =  await Movie.findbyName(name);
+ const movies =  await Movie.findbyName(searchvalue);
  res.render('gubcinema/home/timkiem',{movies,cinemas});
 }));
 
