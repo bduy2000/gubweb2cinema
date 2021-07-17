@@ -1,4 +1,4 @@
-# Bcinema Project - Finally Project Web 2 (  )
+# Bcinema Project - Finally Project Web 2 ( Server-side Redering )
 
 ## About Project
 <p>- BCinema is a website which buy movie tickets and manage cinema,theater,movie,showtime,..Well, it consists of :  <p>
