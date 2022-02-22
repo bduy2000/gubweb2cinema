@@ -1,16 +1,16 @@
 # Bcinema Project - Finally Project Web 2 ( Server-side Redering )
 
 ## About Project
-<p>- BCinema is a website which buy movie tickets and manage cinema,theater,movie,showtime,..Well, it consists of :  <p>
+<p>BCinema is a website in which users buy movie tickets and manage cinema, theater, movie, showtime,...Well, it consists of :  <p>
 
 ### Customer
-1. Create,register,recovery account by email
+1. Create, register, verify/recovery account by email
 2. Update profile, change password
-3. View information of movies,cinemas,showtimes and booking history
-4. Get ticket
+3. View information of movies, cinemas, showtimes and user`s booking history
+4. Get tickets
 
 ### Admin
-1. CRUD cinema,theater,showtime,movie 
+1. CRUD cinema, theater, showtime, movie 
 2. Statistic ticket number and revenue by cinemas and movies
 
 
